@@ -4,6 +4,10 @@
     import files from "$lib/program/files";
 </script>
 
+<svelte:head>
+    <title>Tomás Rinaldi's webpage</title>
+</svelte:head>
+
 <WindowSystem>
     <div class="files-container">
         {#each files as file}

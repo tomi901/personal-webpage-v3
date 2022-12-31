@@ -9,7 +9,7 @@ export const files: ExecutableFile[] = [
         yPos: 0,
         icon: "https://icons.iconarchive.com/icons/hopstarter/soft-scraps/256/Web-HTML-icon.png",
         onOpen(system: OperativeSystem) {
-            system.openWindow("/programs/tomas_rinaldi.html");
+            system.openWindow("/programs/tomas_rinaldi.html", "Tomas Rinaldi.html");
         },
     },
     {
