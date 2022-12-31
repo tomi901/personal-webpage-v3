@@ -3,11 +3,11 @@
     import { setContextSystem } from "../program/system";
     import ProgramWindow from "./ProgramWindow.svelte";
 
-    const windows: { title?: string, url: string }[] = [];
+    let windows: { title?: string, url: string }[] = [];
 
     function openWindow(url: string, title?: string) {
         windows.push({ title, url });
-        console.log(windows);
+        windows = windows; // Forces update
     }
 
     const fileLookup = createFileLookup(...files);
@@ -26,3 +26,10 @@
         <iframe title={w.title} src={w.url} />
     </ProgramWindow>
 {/each}
+
+<style>
+    iframe {
+        width: calc(100% - 4px);
+        background-color: white;
+    }
+</style>

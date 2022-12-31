@@ -12,7 +12,7 @@
     </div>
 </WindowSystem>
 
-<style>
+<style global>
     .files-container {
         display: grid;
         grid-template-columns: repeat(auto-fill, 64px);
@@ -22,4 +22,16 @@
         gap: 1rem;
         padding: 32px;
     }
+
+    :global(html) {
+		background-color: hsl(164, 86%, 16%);
+		color: rgb(254 243 199);
+	}
+	:global(body) {
+		margin: 0;
+	}
+	:global(code) {
+		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+			Bitstream Vera Sans Mono, Courier New, monospace;
+	}
 </style>
