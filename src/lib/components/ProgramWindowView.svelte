@@ -1,4 +1,8 @@
 <script lang="ts">
+    import { createEventDispatcher } from 'svelte';
+
+    const dispatch = createEventDispatcher();
+
     export let title = "Window";
     export let height = 200;
     export let width = 300;
@@ -21,7 +25,7 @@
             <span>{title}</span>
         </div>
         <div class="window-buttons">
-            <button class="close-btn"></button>
+            <button on:click={() => dispatch('close')} class="close-btn"></button>
         </div>
     </header>
     <main>

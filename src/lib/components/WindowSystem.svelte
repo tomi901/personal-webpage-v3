@@ -1,13 +1,22 @@
 <script lang="ts">
+	import { ProgramWindow } from "$lib/program/ProgramWindow";
     import files, { createFileLookup } from "../program/files";
     import { setContextSystem } from "../program/system";
-    import ProgramWindow from "./ProgramWindow.svelte";
+    import ProgramWindowView from "./ProgramWindowView.svelte";
 
-    let windows: { title?: string, url: string }[] = [];
+    let windows: ProgramWindow[] = [];
 
-    function openWindow(url: string, title?: string) {
-        windows.push({ title, url });
+    function openWindow(url: string, title?: string): ProgramWindow {
+        const newWindow = new ProgramWindow(url, title);
+        windows.push(newWindow);
         windows = windows; // Forces update
+        return newWindow;
+    }
+
+    function closeWindow(win: ProgramWindow) {
+        const index = windows.indexOf(win);
+        windows.splice(index);
+        windows = windows;
     }
 
     const fileLookup = createFileLookup(...files);
@@ -21,10 +30,10 @@
 
 <slot />
 
-{#each windows as w}
-    <ProgramWindow title={w.title}>
-        <iframe title={w.title} src={w.url} />
-    </ProgramWindow>
+{#each windows as win}
+    <ProgramWindowView title={win.title} on:close={() => closeWindow(win)}>
+        <iframe title={win.title} src={win.url} />
+    </ProgramWindowView>
 {/each}
 
 <style>
