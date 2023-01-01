@@ -46,14 +46,22 @@
 <slot />
 
 {#each windows as win}
-    <ProgramWindowView title={win.title} on:close={() => closeWindow(win)}>
+    <ProgramWindowView
+        title={win.title}
+        bind:x={win.x}
+        bind:y={win.y}
+        bind:width={win.width}
+        bind:height={win.height}
+        on:close={() => closeWindow(win)}
+        >
         <iframe title={win.title} src={win.url} />
     </ProgramWindowView>
 {/each}
 
 <style>
     iframe {
-        width: calc(100% - 4px);
-        background-color: white;
+        width: 100%;
+        height: calc(100% - 4px);
+        border: none;
     }
 </style>
