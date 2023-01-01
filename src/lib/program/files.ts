@@ -10,7 +10,7 @@ export const files: ExecutableFile[] = [
         icon: "https://icons.iconarchive.com/icons/hopstarter/soft-scraps/256/Web-HTML-icon.png",
         onOpen(system: OperativeSystem) {
             system.openWindow("/programs/tomas_rinaldi.html", {
-                title: "Tomas Rinaldi.html",
+                title: this.name,
             });
         },
     },
@@ -20,6 +20,11 @@ export const files: ExecutableFile[] = [
         xPos: 0,
         yPos: 2,
         icon: "https://icons.iconarchive.com/icons/hopstarter/soft-scraps/256/Web-HTML-icon.png",
+        onOpen(system: OperativeSystem) {
+            system.openWindow("/programs/projects", {
+                title: this.name,
+            });
+        },
     },
     {
         id: "games",
@@ -27,6 +32,11 @@ export const files: ExecutableFile[] = [
         xPos: 0,
         yPos: 3,
         icon: "https://icons.iconarchive.com/icons/hopstarter/soft-scraps/256/Web-HTML-icon.png",
+        onOpen(system: OperativeSystem) {
+            system.openWindow("/programs/games", {
+                title: this.name,
+            });
+        },
     },
 ];
 
