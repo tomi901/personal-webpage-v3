@@ -1,13 +1,32 @@
 <script lang="ts">
-	import { ProgramWindow } from "$lib/program/ProgramWindow";
-    import files, { createFileLookup } from "../program/files";
+	import { ProgramWindow, type ProgramWindowOptions } from "$lib/program/ProgramWindow";
     import { setContextSystem } from "../program/system";
     import ProgramWindowView from "./ProgramWindowView.svelte";
 
     let windows: ProgramWindow[] = [];
 
-    function openWindow(url: string, title?: string): ProgramWindow {
-        const newWindow = new ProgramWindow(url, title);
+    function openWindow(url: string, windowOptions?: Partial<ProgramWindowOptions>, forceNew?: boolean): ProgramWindow {
+        const win = getOrCreateWindow(url, forceNew);
+        if (windowOptions) {
+            win.title = windowOptions.title;
+            windowOptions.x && (win.x = windowOptions.x);
+            windowOptions.y && (win.y = windowOptions.y);
+            windowOptions.height && (win.height = windowOptions.height);
+            windowOptions.width && (win.width = windowOptions.width);
+        }
+        return win;
+    }
+
+    function getOrCreateWindow(url: string, forceNew?: boolean) {
+        if (!forceNew) {
+            for (const win of windows) {
+                if (win.url === url) {
+                    return win;
+                }
+            }
+        }
+
+        const newWindow = new ProgramWindow(url);
         windows.push(newWindow);
         windows = windows; // Forces update
         return newWindow;
@@ -19,11 +38,7 @@
         windows = windows;
     }
 
-    const fileLookup = createFileLookup(...files);
     setContextSystem({
-        getFileById(id) {
-            return fileLookup[id];
-        },
         openWindow,
     });
 </script>

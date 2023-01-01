@@ -11,7 +11,7 @@
 <WindowSystem>
     <div class="files-container">
         {#each files as file}
-            <FileElement info={file} />
+            <FileElement file={file} />
         {/each}
     </div>
 </WindowSystem>

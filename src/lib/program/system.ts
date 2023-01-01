@@ -1,12 +1,10 @@
 import { getContext, setContext } from "svelte";
-import type { ExecutableFile } from "./File";
-import type { ProgramWindow } from "./ProgramWindow";
+import type { ProgramWindow, ProgramWindowOptions } from "./ProgramWindow";
 
 const key = Symbol();
 
 export interface OperativeSystem {
-    getFileById: (id: string) => ExecutableFile;
-    openWindow: (url: string, title?: string) => ProgramWindow;
+    openWindow: (url: string, windowOptions?: Partial<ProgramWindowOptions>, forceNew?: boolean) => ProgramWindow;
 }
 
 export function setContextSystem(system: OperativeSystem) {

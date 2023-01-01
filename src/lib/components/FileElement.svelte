@@ -1,15 +1,14 @@
 <script lang="ts">
-    import type { File } from "../program/File";
-    import { open } from "../program";
+    import type { ExecutableFile } from "../program/File";
     import { getContextSystem } from "../program/system";
 
-    export let info: File;
+    export let file: ExecutableFile;
     const {
         name,
         icon,
         xPos,
         yPos,
-    } = info;
+    } = file;
 
     const contextSystem = getContextSystem();
 
@@ -21,7 +20,7 @@
         if (!contextSystem) {
             return console.error("No context system defined");
         }
-        open(info, contextSystem);
+        file.onOpen && file.onOpen(contextSystem);
     }
 </script>
 
