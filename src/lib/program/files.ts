@@ -11,7 +11,7 @@ export const files: ExecutableFile[] = [
         onOpen(system: OperativeSystem) {
             system.openWindow("/programs/tomas_rinaldi.html", {
                 title: this.name,
-                width: 400,
+                width: 500,
                 height: 500,
             });
         },
