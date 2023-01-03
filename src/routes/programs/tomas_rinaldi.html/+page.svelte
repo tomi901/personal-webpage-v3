@@ -47,7 +47,8 @@
     <h4>Rust</h4>
 
     <Image _class="image" maxHeight="128px">
-        <img src="/Logos/rust.png" alt="Rust logo" />
+        <img src="/Logos/rust.svg" alt="Rust logo" />
+        <img src="/Logos/tauri.svg" alt="Tauri logo" />
     </Image>
 
     <p>

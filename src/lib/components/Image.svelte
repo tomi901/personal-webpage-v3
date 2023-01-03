@@ -25,6 +25,7 @@
         flex-direction: row;
         justify-content: center;
         max-width: 100%;
+        gap: 25px
     }
 
     .img-container :global(*) {
