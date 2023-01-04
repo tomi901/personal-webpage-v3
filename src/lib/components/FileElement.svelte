@@ -43,8 +43,9 @@
     }
 
     .file>img {
-        height: 32px;
-        margin-bottom: 8px;
+        height: 48px;
+        margin-bottom: 4px;
+        image-rendering: crisp-edges;
     }
 
     .file>p {

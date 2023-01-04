@@ -21,8 +21,8 @@
         display: grid;
         grid-template-columns: repeat(auto-fill, 64px);
         grid-auto-columns: 64px;
-        grid-template-rows: repeat(auto-fill, 96px);
-        grid-auto-rows: 96px;
+        grid-template-rows: repeat(auto-fill, 100px);
+        grid-auto-rows: 100px;
         gap: 1rem;
         padding: 32px;
     }
