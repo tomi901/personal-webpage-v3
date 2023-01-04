@@ -1,5 +1,6 @@
 <script lang="ts">
     import { createEventDispatcher } from 'svelte';
+    import { scale } from 'svelte/transition';
 
     const dispatch = createEventDispatcher();
 
@@ -19,6 +20,7 @@
     style:width={asCssPosition(width)}
     style:top={asCssPosition(y)}
     style:left={asCssPosition(x)}
+    transition:scale={{ duration: 100 }}
     >
     <header>
         <div class="window-info">
@@ -39,15 +41,20 @@
         background-color: lightslategray;
         display: flex;
         flex-direction: column;
+
+        transform-origin: 0% 0%;
     }
 
     header {
-        height: 24px;
-        padding: 4px 12px;
-        background-color: slategray;
+        height: 16px;
+        padding: 4px 6px;
         display: flex;
         flex-direction: row;
         align-items: center;
+
+        border: 12px solid transparent;
+        border-image: url("/UI/window_header.png") 6 fill;
+        image-rendering: crisp-edges;
     }
 
     .window-info {
@@ -63,11 +70,26 @@
     .window-buttons>button {
         width: 24px;
         height: 24px;
+
+        transition: filter 200ms;
+    }
+
+    button:hover {
+        filter: brightness(110%);
+    }
+    
+    .close-btn {
+        border: none;
+        background: url("/UI/close.png");
     }
 
     main {
         overflow: scroll;
         flex-grow: 1;
         background-color: white;
+
+        border: 6px solid transparent;
+        border-image: url("/UI/window_border.png") 3 round;
+        image-rendering: crisp-edges;
     }
 </style>
