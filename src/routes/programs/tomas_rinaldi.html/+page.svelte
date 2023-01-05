@@ -10,9 +10,9 @@
         as a hobby and I aspire to become an indie developer.
     </p>
 
-    <Image _class="image" footer="The avatar I mostly use" maxHeight="128px">
-        <img src="/profile_picture.jpg" alt="My avatar" />
-    </Image>
+    <Image footer="The avatar I mostly use" height="128px" images={[
+        { src: "/profile_picture.jpg", alt: "My avatar" },
+    ]} />
 
     <h3>Programming</h3>
 
@@ -23,19 +23,19 @@
         been working with Unity for 10 years, including hobby years, so I would say I'm pretty familiar with it.
     </p>
 
-    <Image _class="image" footer="Retro graphics 3D platformer I made as a demo">
-        <img src="/Games/Screenshots/floppa_game_1.jpg" alt="Retro graphics 3D platformer screenshot" />
-    </Image>
-    <Image _class="image" footer="Urban explorers, a 2D urban exploration I made with an indie company">
-        <img src="/Games/Screenshots/urban_explorers_1.jpg" alt="Urban explorers screenshot" />
-    </Image>
+    <Image footer="Retro graphics 3D platformer I made as a demo" images={[
+        { src: "/Games/Screenshots/floppa_game_1.jpg", alt: "Retro graphics 3D platformer screenshot" },
+    ]} />
+    <Image footer="Urban explorers, a 2D urban exploration I made with an indie company" images={[
+        { src: "/Games/Screenshots/urban_explorers_1.jpg", alt: "Urban explorers screenshot" },
+    ]} />
 
     <h4>Web development</h4>
 
-    <Image _class="image" maxHeight="128px">
-        <img src="/Logos/react.png" alt="React logo" />
-        <img src="/Logos/svelte.png" alt="Svelte logo" />
-    </Image>
+    <Image height="128px" images={[
+        { src: "/Logos/react.png", alt: "React logo" },
+        { src: "/Logos/svelte.png", alt: "Svelte logo" },
+    ]} />
 
     <p>
         For web
@@ -46,10 +46,10 @@
 
     <h4>Rust</h4>
 
-    <Image _class="image" maxHeight="128px">
-        <img src="/Logos/rust.svg" alt="Rust logo" />
-        <img src="/Logos/tauri.svg" alt="Tauri logo" />
-    </Image>
+    <Image height="128px" images={[
+        { src: "/Logos/rust.svg", alt: "Rust logo" },
+        { src: "/Logos/tauri.svg", alt: "Tauri logo" },
+    ]} />
 
     <p>
         For lower level languagues I'm more of a fan of <b>Rust</b> over <b>C++</b> or <b>C</b>, I really like many of the approachs it
@@ -62,11 +62,5 @@
     article {
         padding: 20px 40px;
         text-align: justify;
-    }
-
-    :global(.image) {
-        max-width: 100%;
-        margin: 0px auto;
-        padding: 15px 5px;
     }
 </style>

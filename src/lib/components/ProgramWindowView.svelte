@@ -84,7 +84,6 @@
     }
 
     main {
-        overflow: scroll;
         flex-grow: 1;
         background-color: white;
 
