@@ -16,7 +16,7 @@
     </div>
 </WindowSystem>
 
-<style global>
+<style>
     .files-container {
         display: grid;
         grid-template-columns: repeat(auto-fill, 64px);

@@ -45,6 +45,15 @@
         transform-origin: 0% 0%;
     }
 
+    @media (max-width: 800px) {
+        .window {
+            width: 100% !important;
+            height: 100% !important;
+            top: 0 !important;
+            left: 0 !important;
+        }
+    }
+
     header {
         height: 16px;
         padding: 4px 6px;

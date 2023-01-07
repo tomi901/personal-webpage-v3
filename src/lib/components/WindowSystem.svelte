@@ -1,9 +1,31 @@
 <script lang="ts">
+	import type { AnyMessage } from "$lib/messages";
 	import { ProgramWindow, type ProgramWindowOptions } from "$lib/program/ProgramWindow";
+	import { onMount, onDestroy } from "svelte";
     import { setContextSystem } from "../program/system";
     import ProgramWindowView from "./ProgramWindowView.svelte";
 
+    export let listenToMessages = true;
+
     let windows: ProgramWindow[] = [];
+    const abort = new AbortController();
+
+    setContextSystem({
+        openWindow,
+    });
+
+    onMount(() => {
+        if (listenToMessages) {
+            window.addEventListener('message', (message: MessageEvent<AnyMessage>) => {
+                if (message.isTrusted && message.data.type == 'open-window') {
+                    const { url, options, forceNew } = message.data;
+                    openWindow(url, options, forceNew);
+                }
+            }, { signal: abort.signal });
+        }
+    });
+
+    onDestroy(() => abort.abort());
 
     function openWindow(url: string, windowOptions?: Partial<ProgramWindowOptions>, forceNew?: boolean): ProgramWindow {
         const win = getOrCreateWindow(url, forceNew);
@@ -37,10 +59,6 @@
         windows.splice(index);
         windows = windows;
     }
-
-    setContextSystem({
-        openWindow,
-    });
 </script>
 
 <slot />
