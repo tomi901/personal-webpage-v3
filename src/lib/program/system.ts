@@ -1,10 +1,14 @@
 import { getContext, setContext } from "svelte";
 import type { ProgramWindowOptions } from "./ProgramWindow";
+import type { SvelteComponentTyped } from "svelte";
 
 const key = Symbol();
 
+export type URL = string;
+export type Content = URL | SvelteComponentTyped;
+
 export interface OperativeSystem {
-    openWindow: (url: string, windowOptions?: Partial<ProgramWindowOptions>, forceNew?: boolean) => void;
+    openWindow: (content: Content, windowOptions?: Partial<ProgramWindowOptions>, forceNew?: boolean) => void;
 }
 
 export function setContextSystem(system: OperativeSystem) {

@@ -10,6 +10,7 @@ export const files: ExecutableFile[] = [
         icon: "/Icons/html-2.png",
         onOpen(system: OperativeSystem) {
             system.openWindow("/programs/tomas_rinaldi.html", {
+                programId: this.id,
                 title: this.name,
                 width: 800,
                 height: 600,
@@ -24,6 +25,7 @@ export const files: ExecutableFile[] = [
         icon: "/Icons/directory.png",
         onOpen(system: OperativeSystem) {
             system.openWindow("/programs/games", {
+                programId: this.id,
                 title: this.name,
             });
         },

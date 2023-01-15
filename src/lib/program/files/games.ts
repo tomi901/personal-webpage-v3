@@ -7,6 +7,7 @@ export const files: ExecutableFile[] = [
         icon: "/Icons/Games/floppa_adventure.png",
         onOpen(system) {
             system.openWindow("https://v6p9d9t4.ssl.hwcdn.net/html/7156942/floppa_adventure/index.html", {
+                programId: this.id,
                 title: "Floppa Adventure",
                 width: 800,
                 height: 600,

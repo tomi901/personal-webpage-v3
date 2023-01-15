@@ -1,5 +1,5 @@
 <script lang="ts">
-	import FileElement from "$lib/components/FileElement.svelte";
+	import FileContainer from "$lib/components/FileContainer.svelte";
 	import WindowSystem from "$lib/components/WindowSystem.svelte";
     import files from "$lib/program/files";
 </script>
@@ -9,24 +9,13 @@
 </svelte:head>
 
 <WindowSystem>
-    <div class="files-container">
-        {#each files as file}
-            <FileElement file={file} />
-        {/each}
-    </div>
+    <main><FileContainer {files} /></main>
 </WindowSystem>
 
 <style>
-    .files-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, 64px);
-        grid-auto-columns: 64px;
-        grid-template-rows: repeat(auto-fill, 100px);
-        grid-auto-rows: 100px;
-        gap: 1rem;
+    main {
         padding: 32px;
     }
-
     :global(html) {
 		background-color: hsl(164, 86%, 16%);
 		color: rgb(254 243 199);

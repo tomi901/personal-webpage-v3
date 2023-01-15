@@ -2,7 +2,7 @@
 	import type { AnyMessage } from "$lib/messages";
 	import { ProgramWindow, type ProgramWindowOptions } from "$lib/program/ProgramWindow";
 	import { onMount, onDestroy } from "svelte";
-    import { setContextSystem } from "../program/system";
+    import { setContextSystem, type Content } from "../program/system";
     import ProgramWindowView from "./ProgramWindowView.svelte";
 
     export let listenToMessages = true;
@@ -27,28 +27,28 @@
 
     onDestroy(() => abort.abort());
 
-    function openWindow(url: string, windowOptions?: Partial<ProgramWindowOptions>, forceNew?: boolean): ProgramWindow {
-        const win = getOrCreateWindow(url, forceNew);
-        if (windowOptions) {
-            win.title = windowOptions.title;
-            windowOptions.x && (win.x = windowOptions.x);
-            windowOptions.y && (win.y = windowOptions.y);
-            windowOptions.height && (win.height = windowOptions.height);
-            windowOptions.width && (win.width = windowOptions.width);
+    function openWindow(content: Content, windowOptions?: Partial<ProgramWindowOptions>, forceNew?: boolean) {
+        const win = getOrCreateWindow(content, windowOptions?.programId, forceNew);
+        if (!windowOptions) {
+            return;
         }
-        return win;
+        win.title = windowOptions.title;
+        windowOptions.x && (win.x = windowOptions.x);
+        windowOptions.y && (win.y = windowOptions.y);
+        windowOptions.height && (win.height = windowOptions.height);
+        windowOptions.width && (win.width = windowOptions.width);
     }
 
-    function getOrCreateWindow(url: string, forceNew?: boolean) {
+    function getOrCreateWindow(content: Content, programId?: string, forceNew?: boolean): ProgramWindow {
         if (!forceNew) {
             for (const win of windows) {
-                if (win.url === url) {
+                if (win.programId === programId) {
                     return win;
                 }
             }
         }
 
-        const newWindow = new ProgramWindow(url);
+        const newWindow = new ProgramWindow(content, programId);
         windows.push(newWindow);
         windows = windows; // Forces update
         return newWindow;
@@ -72,7 +72,11 @@
         bind:height={win.height}
         on:close={() => closeWindow(win)}
         >
-        <iframe title={win.title} src={win.url} />
+        {#if typeof(win.content) === "string"}
+            <iframe title={win.title} src={win.content} />
+        {:else}
+            <p>Svelte component content not supported yet</p>
+        {/if}
     </ProgramWindowView>
 {/each}
 

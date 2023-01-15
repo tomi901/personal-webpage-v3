@@ -1,5 +1,7 @@
+import type { Content } from "./system";
 
 export interface ProgramWindowOptions {
+    programId?: string;
     title?: string;
 
     x: number;
@@ -9,7 +11,8 @@ export interface ProgramWindowOptions {
 }
 
 export class ProgramWindow implements ProgramWindowOptions {
-    public url: string;
+    public programId?: string;
+    public content: Content;
     public title?: string;
 
     public x = 100;
@@ -17,8 +20,8 @@ export class ProgramWindow implements ProgramWindowOptions {
     public width = 300;
     public height = 200;
 
-    public constructor(url: string, title?: string) {
-        this.url = url;
-        this.title = title;
+    public constructor(content: Content, programId?: string) {
+        this.programId = programId;
+        this.content = content;
     }
 }
