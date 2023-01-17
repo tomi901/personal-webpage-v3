@@ -1,5 +1,4 @@
-import type { ExecutableFile } from "./File";
-import type { OperativeSystem } from "./system";
+import type { ExecutableFile } from "../File";
 
 export const files: ExecutableFile[] = [
     {
@@ -8,7 +7,7 @@ export const files: ExecutableFile[] = [
         xPos: 0,
         yPos: 0,
         icon: "/Icons/html-2.png",
-        onOpen(system: OperativeSystem) {
+        onOpen(system) {
             system.openWindow("/programs/tomas_rinaldi.html", {
                 programId: this.id,
                 title: this.name,
@@ -23,7 +22,7 @@ export const files: ExecutableFile[] = [
         xPos: 0,
         yPos: 2,
         icon: "/Icons/directory.png",
-        onOpen(system: OperativeSystem) {
+        onOpen(system) {
             system.openWindow("/programs/games", {
                 programId: this.id,
                 title: this.name,
