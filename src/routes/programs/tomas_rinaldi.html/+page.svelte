@@ -41,7 +41,7 @@
         For web
         development I used Angular and React, but for me Svelte is my cup of tea. In fact, this page was made with
         SvelteKit, if you want to see the source code for this page you can click
-        <a href="https://github.com/tomi901/personal-webpage-v2/" target="_blank" rel="noreferrer">here</a>.
+        <a href="https://github.com/tomi901/personal-webpage-v3/" target="_blank" rel="noreferrer">here</a>.
     </p>
 
     <h4>Rust</h4>
