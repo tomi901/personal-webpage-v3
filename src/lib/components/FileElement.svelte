@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { ExecutableFile } from "../program/File";
-    import { getContextSystem } from "../program/system";
+    import { getContextSystem, type OperativeSystem } from "../program/system";
 
     export let file: ExecutableFile;
     const {
@@ -17,9 +17,7 @@
     }
 
     function onClick() {
-        if (!contextSystem) {
-            return console.error("No context system defined");
-        }
+        console.assert(contextSystem, "No context system defined for this file element.");
         file.onOpen && file.onOpen(contextSystem);
     }
 </script>

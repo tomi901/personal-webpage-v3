@@ -1,12 +1,12 @@
 <script lang="ts">
-	import type { OpenWindowMessage } from "$lib/messages";
+	import type { OpenWindowMessage } from "$lib/types/messages";
 	import { setContextSystem } from "$lib/program/system";
 
     setContextSystem({
-        openWindow(url, options, forceNew) {
+        openWindow(content, options, forceNew) {
             window.parent.postMessage(<OpenWindowMessage>{
                 type: "open-window",
-                url,
+                url: content,
                 options,
                 forceNew,
             });

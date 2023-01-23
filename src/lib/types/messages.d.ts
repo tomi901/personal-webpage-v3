@@ -1,4 +1,4 @@
-import type { ProgramWindowOptions } from "./program/ProgramWindow";
+import type { ProgramWindowOptions } from "../program/ProgramWindow";
 
 export type AnyMessage =
     OpenWindowMessage;

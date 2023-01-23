@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { AnyMessage } from "$lib/messages";
+	import type { AnyMessage } from "$lib/types/messages";
 	import { ProgramWindow, type ProgramWindowOptions } from "$lib/program/ProgramWindow";
 	import { onMount, onDestroy } from "svelte";
     import { setContextSystem, type Content } from "../program/system";
