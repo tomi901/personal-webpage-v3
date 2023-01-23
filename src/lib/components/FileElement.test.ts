@@ -49,4 +49,13 @@ describe("FileElement.svelte", () => {
         expect(result).toBeTruthy();
         expect(called).toBe(1);
     });
+
+    it("Displays name", async () => {
+        const name = "Trust me, I'm a dolphin.exe"
+        const file = createFile({ name })
+
+        const element = render(FileElement, { file });
+
+        expect(element.getByText(name)).toBeInTheDocument();
+    });
 });

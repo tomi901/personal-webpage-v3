@@ -2,7 +2,7 @@ import { getContext, setContext } from "svelte";
 import type { ProgramWindowOptions } from "./ProgramWindow";
 import type { SvelteComponentTyped } from "svelte";
 
-export const key = Symbol();
+const key = Symbol();
 
 export type URL = string;
 export type Content = URL | SvelteComponentTyped;
