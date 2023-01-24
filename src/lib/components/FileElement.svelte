@@ -11,7 +11,6 @@
     } = file;
 
     const contextSystem = getContextSystem();
-    const isUrl = typeof file.onOpen === "string";
 
     function asGridPos(n?: number) {
         return n !== undefined ? n + 1 : 1;
@@ -26,7 +25,8 @@
     }
 </script>
 
-<a href={typeof file.onOpen === "string" ? file.onOpen : file.id}
+{#if typeof file.onOpen === "string"}
+<a href={file.onOpen}
     class="file"
     style:grid-column={asGridPos(xPos)}
     style:grid-row={asGridPos(yPos)}
@@ -36,6 +36,17 @@
     <img alt={name} src={icon} />
     <p>{name}</p>
 </a>
+{:else}
+<div class="file"
+    style:grid-column={asGridPos(xPos)}
+    style:grid-row={asGridPos(yPos)}
+    on:click={onClick}
+    on:keypress={undefined}
+    >
+    <img alt={name} src={icon} />
+    <p>{name}</p>
+</div>
+{/if}
 
 <style>
     .file {

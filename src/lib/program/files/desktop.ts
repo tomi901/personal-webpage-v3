@@ -1,4 +1,5 @@
-import { ICON_DIRECTORY, ICON_HTML } from "$lib/constants/icons";
+import { SOURCE_CODE } from "$lib/constants";
+import { ICON_DIRECTORY, ICON_EXTERNAL_PAGE as ICON_SOURCE_CODE, ICON_HTML } from "$lib/constants/icons";
 import type { ExecutableFile } from "../File";
 
 export const files: ExecutableFile[] = [
@@ -21,7 +22,7 @@ export const files: ExecutableFile[] = [
         id: "games",
         name: "Games",
         xPos: 0,
-        yPos: 3,
+        yPos: 2,
         icon: ICON_DIRECTORY,
         onOpen(system) {
             system.openWindow("/programs/games", {
@@ -29,6 +30,14 @@ export const files: ExecutableFile[] = [
                 title: this.name,
             });
         },
+    },
+    {
+        id: "source_code",
+        name: "Page Source Code",
+        xPos: 0,
+        yPos: 3,
+        icon: ICON_SOURCE_CODE,
+        onOpen: SOURCE_CODE,
     },
 ];
 
