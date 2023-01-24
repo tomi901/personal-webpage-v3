@@ -1,5 +1,6 @@
 <script>
 	import Image from "$lib/components/Image.svelte";
+	import { SOURCE_CODE } from "$lib/constants";
 </script>
 
 <article>
@@ -41,7 +42,7 @@
         For web
         development I used Angular and React, but for me Svelte is my cup of tea. In fact, this page was made with
         SvelteKit, if you want to see the source code for this page you can click
-        <a href="https://github.com/tomi901/personal-webpage-v3/" target="_blank" rel="noreferrer">here</a>.
+        <a href={SOURCE_CODE} target="_blank" rel="noreferrer">here</a>.
     </p>
 
     <h4>Rust</h4>
