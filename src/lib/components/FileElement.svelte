@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { ExecutableFile } from "../program/File";
-    import { getContextSystem, type OperativeSystem } from "../program/system";
+    import { getContextSystem } from "../program/system";
 
     export let file: ExecutableFile;
     const {
@@ -11,18 +11,23 @@
     } = file;
 
     const contextSystem = getContextSystem();
+    const isUrl = typeof file.onOpen === "string";
 
     function asGridPos(n?: number) {
         return n !== undefined ? n + 1 : 1;
     }
 
     function onClick() {
+        if (typeof file.onOpen === "string") {
+            return;
+        }
         console.assert(contextSystem, "No context system defined for this file element.");
         file.onOpen && file.onOpen(contextSystem);
     }
 </script>
 
-<div class="file"
+<a href={typeof file.onOpen === "string" ? file.onOpen : file.id}
+    class="file"
     style:grid-column={asGridPos(xPos)}
     style:grid-row={asGridPos(yPos)}
     on:click={onClick}
@@ -30,7 +35,7 @@
     >
     <img alt={name} src={icon} />
     <p>{name}</p>
-</div>
+</a>
 
 <style>
     .file {
@@ -38,6 +43,9 @@
         flex-direction: column;
         align-items: center;
         cursor: pointer;
+
+        color: inherit;
+        text-decoration: inherit;
     }
 
     .file>img {

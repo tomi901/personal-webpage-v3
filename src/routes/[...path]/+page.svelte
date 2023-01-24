@@ -1,7 +1,7 @@
 <script lang="ts">
 	import FileContainer from "$lib/components/FileContainer.svelte";
 	import WindowSystem from "$lib/components/WindowSystem.svelte";
-    import files from "$lib/program/files";
+    import files from "$lib/program/files/desktop";
 </script>
 
 <svelte:head>

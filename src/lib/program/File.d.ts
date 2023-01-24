@@ -1,4 +1,4 @@
-import type { OperativeSystem } from "./system";
+import type { OperativeSystem, URLString } from "./system";
 
 export interface File {
     id: string;
@@ -10,5 +10,5 @@ export interface File {
 }
 
 export interface ExecutableFile extends File {
-    onOpen?: (system: OperativeSystem) => void;
+    onOpen?: ((system: OperativeSystem) => void) | URLString;
 }
