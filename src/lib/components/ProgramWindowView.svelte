@@ -9,13 +9,18 @@
     export let width = 300;
     export let x = 100;
     export let y = 100;
+    export let maximized = false;
+
+    $: {
+        console.log(title, maximized);
+    }
 
     function asCssPosition(n: number) {
         return `${n}px`;
     }
 </script>
 
-<div class="window"
+<div class="window" class:maximized={maximized}
     style:height={asCssPosition(height)}
     style:width={asCssPosition(width)}
     style:top={asCssPosition(y)}
@@ -52,6 +57,13 @@
             top: 0 !important;
             left: 0 !important;
         }
+    }
+
+    .maximized {
+        width: 100% !important;
+        height: 100% !important;
+        top: 0 !important;
+        left: 0 !important;
     }
 
     header {

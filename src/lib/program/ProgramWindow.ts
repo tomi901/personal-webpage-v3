@@ -8,6 +8,8 @@ export interface ProgramWindowOptions {
     y: number;
     width: number;
     height: number;
+
+    maximized?: boolean;
 }
 
 export class ProgramWindow implements ProgramWindowOptions {
@@ -19,6 +21,8 @@ export class ProgramWindow implements ProgramWindowOptions {
     public y = 100;
     public width = 300;
     public height = 200;
+
+    public maximized?: boolean;
 
     public constructor(content: Content, programId?: string) {
         this.programId = programId;

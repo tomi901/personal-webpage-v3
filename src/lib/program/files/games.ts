@@ -11,6 +11,7 @@ export const files: ExecutableFile[] = [
                 title: "Floppa Adventure",
                 width: 800,
                 height: 600,
+                maximized: true,
             });
         },
     },

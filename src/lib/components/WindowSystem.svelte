@@ -37,6 +37,7 @@
         windowOptions.y && (win.y = windowOptions.y);
         windowOptions.height && (win.height = windowOptions.height);
         windowOptions.width && (win.width = windowOptions.width);
+        windowOptions.maximized && (win.maximized = windowOptions.maximized);
     }
 
     function getOrCreateWindow(content: Content, programId?: string, forceNew?: boolean): ProgramWindow {
@@ -70,6 +71,7 @@
         bind:y={win.y}
         bind:width={win.width}
         bind:height={win.height}
+        bind:maximized={win.maximized}
         on:close={() => closeWindow(win)}
         >
         {#if typeof(win.content) === "string"}
