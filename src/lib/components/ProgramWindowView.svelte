@@ -11,12 +11,12 @@
     export let y = 100;
     export let maximized = false;
 
-    $: {
-        console.log(title, maximized);
-    }
-
     function asCssPosition(n: number) {
         return `${n}px`;
+    }
+
+    function toggleMaximized() {
+        maximized = !maximized;
     }
 </script>
 
@@ -32,7 +32,8 @@
             <span>{title}</span>
         </div>
         <div class="window-buttons">
-            <button on:click={() => dispatch('close')} class="close-btn"></button>
+            <button on:click={toggleMaximized} class="maximize-btn" />
+            <button on:click={() => dispatch('close')} class="close-btn" />
         </div>
     </header>
     <main>
@@ -48,6 +49,10 @@
         flex-direction: column;
 
         transform-origin: 0% 0%;
+
+        transition: width, height, top, left;
+        transition-duration: 200ms;
+        transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     @media (max-width: 800px) {
@@ -56,6 +61,10 @@
             height: 100% !important;
             top: 0 !important;
             left: 0 !important;
+        }
+
+        .maximize-btn {
+            display: none;
         }
     }
 
@@ -86,6 +95,7 @@
         display: flex;
         flex-direction: row;
         align-items: center;
+        gap: 8px;
     }
 
     .window-buttons>button {
@@ -93,6 +103,7 @@
         height: 24px;
 
         transition: filter 200ms;
+        border: none;
     }
 
     button:hover {
@@ -100,8 +111,15 @@
     }
     
     .close-btn {
-        border: none;
         background: url("/UI/close.png");
+    }
+
+    :not(.maximized) .maximize-btn {
+        background: url("/UI/maximize-on.png");
+    }
+
+    .maximized .maximize-btn {
+        background: url("/UI/maximize-off.png");
     }
 
     main {

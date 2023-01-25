@@ -61,7 +61,9 @@
 
 <style>
     article {
-        padding: 20px 40px;
+        padding: 40px 40px;
         text-align: justify;
+        max-width: 800px;
+        margin: auto;
     }
 </style>
