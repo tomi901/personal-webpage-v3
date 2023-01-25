@@ -9,6 +9,7 @@ export type Content = URLString | SvelteComponentTyped;
 
 export interface OperativeSystem {
     openWindow: (content: Content, windowOptions?: Partial<ProgramWindowOptions>, forceNew?: boolean) => void;
+    goto: (url: URLString) => Promise<void>;
 }
 
 export function getContextKeyValue(system: OperativeSystem): [symbol, OperativeSystem] {

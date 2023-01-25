@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { OpenWindowMessage } from "$lib/types/messages";
+	import type { GotoMessage, OpenWindowMessage } from "$lib/types/messages";
 	import { setContextSystem } from "$lib/program/system";
 
     setContextSystem({
@@ -10,6 +10,13 @@
                 options,
                 forceNew,
             });
+        },
+        goto(url) {
+            window.parent.postMessage(<GotoMessage>{
+                type: "goto",
+                url,
+            });
+            return Promise.resolve();
         },
     });
 </script>

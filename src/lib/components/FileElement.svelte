@@ -22,6 +22,7 @@
         }
         console.assert(contextSystem, "No context system defined for this file element.");
         file.onOpen && file.onOpen(contextSystem);
+        contextSystem.goto(file.id);
     }
 </script>
 

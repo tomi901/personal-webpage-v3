@@ -7,7 +7,6 @@ export const load: import('./$types').PageLoad = function ({ params }) {
         throw error(404, 'Not found');
     }
 
-    console.log(params.path);
     return {
         startWithFile: params.path,
     };

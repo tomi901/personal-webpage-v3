@@ -5,6 +5,7 @@
     import { setContextSystem, type Content, type OperativeSystem } from "../program/system";
     import ProgramWindowView from "./ProgramWindowView.svelte";
 	import { getFile } from "$lib/program/files/all";
+	import { goto } from "$app/navigation";
 
     export let listenToMessages = true;
     export let startWithFiles: string[] = [];
@@ -14,6 +15,7 @@
 
     export const system: OperativeSystem = {
         openWindow,
+        goto,
     };
     setContextSystem(system);
 
@@ -26,10 +28,15 @@
 
     onMount(() => {
         if (listenToMessages) {
-            window.addEventListener('message', (message: MessageEvent<AnyMessage>) => {
-                if (message.isTrusted && message.data.type == 'open-window') {
-                    const { url, options, forceNew } = message.data;
-                    openWindow(url, options, forceNew);
+            window.addEventListener("message", (message: MessageEvent<AnyMessage>) => {
+                switch (message.data.type) {
+                    case "open-window":
+                        const { url, options, forceNew } = message.data;
+                        openWindow(url, options, forceNew);
+                        break;
+                    case "goto":
+                        goto(message.data.url);
+                        break;
                 }
             }, { signal: abort.signal });
         }
