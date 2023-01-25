@@ -15,7 +15,7 @@
 
     export const system: OperativeSystem = {
         openWindow,
-        goto,
+        goto: systemGoto,
     };
     setContextSystem(system);
 
@@ -35,7 +35,7 @@
                         openWindow(url, options, forceNew);
                         break;
                     case "goto":
-                        goto(message.data.url);
+                        systemGoto(message.data.url);
                         break;
                 }
             }, { signal: abort.signal });
@@ -43,6 +43,10 @@
     });
 
     onDestroy(() => abort.abort());
+
+    function systemGoto(url: string): Promise<void> {
+        return goto(`/${url}`, { replaceState: true });
+    }
 
     function openWindow(content: Content, windowOptions?: Partial<ProgramWindowOptions>, forceNew?: boolean) {
         const win = getOrCreateWindow(content, windowOptions?.programId, forceNew);
