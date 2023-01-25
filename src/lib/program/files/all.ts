@@ -11,6 +11,10 @@ function getAllKeyValues(): [string, ExecutableFile][] {
     ].map(f => [f.id, f]);
 }
 
-export function fileWithIdExists(id: string) {
+export function fileWithIdExists(id: string): boolean {
     return allLookup.has(id);
+}
+
+export function getFile(id: string): ExecutableFile | undefined {
+    return allLookup.get(id);
 }

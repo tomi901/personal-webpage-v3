@@ -2,13 +2,15 @@
 	import FileContainer from "$lib/components/FileContainer.svelte";
 	import WindowSystem from "$lib/components/WindowSystem.svelte";
     import files from "$lib/program/files/desktop";
+
+	export let data: import("./$types").PageData;
 </script>
 
 <svelte:head>
     <title>Tomás Rinaldi's webpage</title>
 </svelte:head>
 
-<WindowSystem>
+<WindowSystem startWithFiles={data.startWithFile ? [data.startWithFile] : []}>
     <main><FileContainer {files} /></main>
 </WindowSystem>
 

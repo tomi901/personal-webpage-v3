@@ -2,17 +2,27 @@
 	import type { AnyMessage } from "$lib/types/messages";
 	import { ProgramWindow, type ProgramWindowOptions } from "$lib/program/ProgramWindow";
 	import { onMount, onDestroy } from "svelte";
-    import { setContextSystem, type Content } from "../program/system";
+    import { setContextSystem, type Content, type OperativeSystem } from "../program/system";
     import ProgramWindowView from "./ProgramWindowView.svelte";
+	import { getFile } from "$lib/program/files/all";
 
     export let listenToMessages = true;
+    export let startWithFiles: string[] = [];
 
     let windows: ProgramWindow[] = [];
     const abort = new AbortController();
 
-    setContextSystem({
+    export const system: OperativeSystem = {
         openWindow,
-    });
+    };
+    setContextSystem(system);
+
+    for (const fileId of startWithFiles) {
+        const file = getFile(fileId);
+        if (file && file.onOpen && typeof file.onOpen !== "string") {
+            file.onOpen(system);
+        }
+    }
 
     onMount(() => {
         if (listenToMessages) {
