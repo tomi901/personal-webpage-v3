@@ -21,6 +21,7 @@ describe("FileElement.svelte", () => {
     function stubContextSystem(): [symbol, OperativeSystem] {
         return getContextKeyValue({
             openWindow() { /**/ },
+            goto(_) { return Promise.resolve(); }
         });
     }
 

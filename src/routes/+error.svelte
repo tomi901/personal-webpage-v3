@@ -50,7 +50,7 @@
     }
 
     pre {
-        font-family: var(--default-font);
+        font-family: inherit;
     }
 
     p {
