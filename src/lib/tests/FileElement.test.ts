@@ -4,7 +4,8 @@ import { render, fireEvent } from "@testing-library/svelte";
 
 import FileElement from "$components/FileElement.svelte";
 import type { ExecutableFile } from "$lib/program/File";
-import { getContextKeyValue, type OperativeSystem } from "$lib/program/system";
+import { getContextKeyValue } from "$lib/program/system";
+import type { OperativeSystem } from "$lib/program/system-types";
 
 describe("FileElement.svelte", () => {
     const testFile = Object.freeze({

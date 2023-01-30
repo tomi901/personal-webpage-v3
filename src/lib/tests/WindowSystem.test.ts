@@ -4,10 +4,12 @@ import { render } from "@testing-library/svelte";
 
 import WindowSystem from "$components/WindowSystem.svelte";
 import type { ExecutableFile } from "$lib/program/File";
-import type { OperativeSystem } from "$lib/program/system";
+import type { Content, OperativeSystem } from "$lib/program/system-types";
+import TestElement from "./TestElement.svelte";
+import { componentWithProps } from "$lib/program/system";
 
 describe("WindowSystem.svelte", () => {
-    function createTestFile(onOpen?: (system: OperativeSystem) => void): ExecutableFile {
+    function testFile(onOpen?: (system: OperativeSystem) => void): ExecutableFile {
         return {
             id: "test",
             icon: "icon.png",
@@ -15,17 +17,38 @@ describe("WindowSystem.svelte", () => {
             onOpen,
         }
     }
+
+    function testFileOpen(content: Content) {
+        return testFile((system) => {
+            system.openWindow(content);
+        });
+    }
     
     it("Opens a window to iframe", () => {
         const src = "https://www.google.com/";
-        const file = createTestFile((system) => {
-           system.openWindow(src);
-        });
+        const file = testFileOpen(src);
         
-        const target = render(WindowSystem, { startWithFiles: [file] })
+        const target = render(WindowSystem, { startWithFiles: [file] });
 
         const iframe = target.container.querySelector<HTMLIFrameElement>(".window iframe");
         expect(iframe).toBeInTheDocument();
         expect(iframe?.src).toBe(src);
+    });
+
+    it("Opens with svelte simple component class", () => {
+        const file = testFileOpen(TestElement);
+
+        const target = render(WindowSystem, { startWithFiles: [file] });
+
+        expect(target.getByText("TEST ELEMENT")).toBeInTheDocument();
+    });
+
+    it("Opens with svelte simple component class", () => {
+        const file = testFileOpen(componentWithProps(TestElement, { name: "John" }));
+
+        const target = render(WindowSystem, { startWithFiles: [file] });
+
+        expect(target.getByText("TEST ELEMENT")).toBeInTheDocument();
+        expect(target.getByText("Hello John")).toBeInTheDocument();
     });
 });

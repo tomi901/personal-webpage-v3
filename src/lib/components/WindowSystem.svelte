@@ -3,8 +3,9 @@
 
     import ProgramWindowView from "./ProgramWindowView.svelte";
 	import { ProgramWindow, type ProgramWindowOptions } from "$lib/program/ProgramWindow";
-    
-    import { setContextSystem, type Content, type OperativeSystem } from "$lib/program/system";
+
+    import { setContextSystem } from "$lib/program/system";
+	import type { Content, OperativeSystem } from "$lib/program/system-types";
 	import type { AnyMessage } from "$lib/types/messages";
     import type { ExecutableFile } from "$lib/program/File";
 	import { getFile } from "$lib/program/files/all";
@@ -100,8 +101,10 @@
         >
         {#if typeof(win.content) === "string"}
             <iframe title={win.title} src={win.content} />
+        {:else if "props" in win.content}
+        <svelte:component this={win.content.component} {...win.content.props} />
         {:else}
-            <p>Svelte component content not supported yet</p>
+            <svelte:component this={win.content} />
         {/if}
     </ProgramWindowView>
 {/each}

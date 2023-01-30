@@ -1,16 +1,7 @@
-import { getContext, setContext } from "svelte";
-import type { ProgramWindowOptions } from "./ProgramWindow";
-import type { SvelteComponentTyped } from "svelte";
+import { getContext, setContext, type SvelteComponentTyped } from "svelte";
+import type { AnyProps, ComponentTypeWithProps, OperativeSystem } from "./system-types";
 
 const key = Symbol();
-
-export type URLString = string;
-export type Content = URLString | SvelteComponentTyped;
-
-export interface OperativeSystem {
-    openWindow: (content: Content, windowOptions?: Partial<ProgramWindowOptions>, forceNew?: boolean) => void;
-    goto: (url: URLString) => Promise<void>;
-}
 
 export function getContextKeyValue(system: OperativeSystem): [symbol, OperativeSystem] {
     return [key, system];
@@ -22,4 +13,14 @@ export function setContextSystem(system: OperativeSystem) {
 
 export function getContextSystem() {
     return getContext<OperativeSystem>(key);
+}
+
+export function componentWithProps<Props extends AnyProps>(
+    component: typeof SvelteComponentTyped<Props>,
+    props: Props,
+): ComponentTypeWithProps<Props> {
+    return {
+        component,
+        props,
+    };
 }
