@@ -1,4 +1,4 @@
-import type { OperativeSystem, URLString } from "./system";
+import type { OperativeSystem, URLString } from "./system-types";
 
 export interface File {
     id: string;

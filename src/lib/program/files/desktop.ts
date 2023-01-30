@@ -1,6 +1,9 @@
+import FileExplorer from "$components/FileExplorer.svelte";
 import { SOURCE_CODE } from "$lib/constants";
 import { ICON_DIRECTORY, ICON_EXTERNAL_PAGE as ICON_SOURCE_CODE, ICON_HTML } from "$lib/constants/icons";
 import type { ExecutableFile } from "../File";
+import { componentWithProps } from "../system";
+import games from "./games";
 
 export const files: ExecutableFile[] = [
     {
@@ -25,7 +28,7 @@ export const files: ExecutableFile[] = [
         yPos: 2,
         icon: ICON_DIRECTORY,
         onOpen(system) {
-            system.openWindow("/programs/games", {
+            system.openWindow(componentWithProps(FileExplorer, { files: games }), {
                 programId: this.id,
                 title: this.name,
             });
