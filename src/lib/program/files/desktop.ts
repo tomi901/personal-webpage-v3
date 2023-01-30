@@ -19,6 +19,7 @@ export const files: ExecutableFile[] = [
                 title: this.name,
                 width: 800,
                 height: 600,
+                maximized: true,
             });
         },
     },
