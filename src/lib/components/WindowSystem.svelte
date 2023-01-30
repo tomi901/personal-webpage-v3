@@ -1,27 +1,22 @@
 <script lang="ts">
-	import { onMount, onDestroy } from "svelte";
-
     import ProgramWindowView from "./ProgramWindowView.svelte";
 	import { ProgramWindow, type ProgramWindowOptions } from "$lib/program/ProgramWindow";
 
     import { setContextSystem } from "$lib/program/system";
 	import type { Content, OperativeSystem } from "$lib/program/system-types";
-	import type { AnyMessage } from "$lib/types/messages";
     import type { ExecutableFile } from "$lib/program/File";
 	import { getFile } from "$lib/program/files/all";
 	import { goto } from "$app/navigation";
 
-    export let listenToMessages = true;
     export let startWithFiles: (string | ExecutableFile)[] = [];
-
-    let windows: ProgramWindow[] = [];
-    const abort = new AbortController();
 
     export const system: OperativeSystem = {
         openWindow,
         goto: systemGoto,
     };
     setContextSystem(system);
+    
+    export let windows: ProgramWindow[] = [];
 
     for (const file of startWithFiles) {
         const f = typeof file === "string" ? getFile(file) : file;
@@ -29,24 +24,6 @@
             f.onOpen(system);
         }
     }
-
-    onMount(() => {
-        if (listenToMessages) {
-            window.addEventListener("message", (message: MessageEvent<AnyMessage>) => {
-                switch (message.data.type) {
-                    case "open-window":
-                        const { url, options, forceNew } = message.data;
-                        openWindow(url, options, forceNew);
-                        break;
-                    case "goto":
-                        systemGoto(message.data.url);
-                        break;
-                }
-            }, { signal: abort.signal });
-        }
-    });
-
-    onDestroy(() => abort.abort());
 
     function systemGoto(url: string): Promise<void> {
         return goto(`/${url}`, { replaceState: true });
