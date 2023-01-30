@@ -1,7 +1,8 @@
+import { describe, it, expect } from "vitest";
 import "@testing-library/jest-dom"
-import { describe, expect, it } from "vitest";
 import { render, fireEvent } from "@testing-library/svelte";
-import FileElement from "./FileElement.svelte";
+
+import FileElement from "$components/FileElement.svelte";
 import type { ExecutableFile } from "$lib/program/File";
 import { getContextKeyValue, type OperativeSystem } from "$lib/program/system";
 
@@ -21,7 +22,7 @@ describe("FileElement.svelte", () => {
     function stubContextSystem(): [symbol, OperativeSystem] {
         return getContextKeyValue({
             openWindow() { /**/ },
-            goto(_) { return Promise.resolve(); }
+            goto() { return Promise.resolve(); }
         });
     }
 

@@ -1,14 +1,17 @@
 <script lang="ts">
-	import type { AnyMessage } from "$lib/types/messages";
-	import { ProgramWindow, type ProgramWindowOptions } from "$lib/program/ProgramWindow";
 	import { onMount, onDestroy } from "svelte";
-    import { setContextSystem, type Content, type OperativeSystem } from "../program/system";
+
     import ProgramWindowView from "./ProgramWindowView.svelte";
+	import { ProgramWindow, type ProgramWindowOptions } from "$lib/program/ProgramWindow";
+    
+    import { setContextSystem, type Content, type OperativeSystem } from "$lib/program/system";
+	import type { AnyMessage } from "$lib/types/messages";
+    import type { ExecutableFile } from "$lib/program/File";
 	import { getFile } from "$lib/program/files/all";
 	import { goto } from "$app/navigation";
 
     export let listenToMessages = true;
-    export let startWithFiles: string[] = [];
+    export let startWithFiles: (string | ExecutableFile)[] = [];
 
     let windows: ProgramWindow[] = [];
     const abort = new AbortController();
@@ -19,10 +22,10 @@
     };
     setContextSystem(system);
 
-    for (const fileId of startWithFiles) {
-        const file = getFile(fileId);
-        if (file && file.onOpen && typeof file.onOpen !== "string") {
-            file.onOpen(system);
+    for (const file of startWithFiles) {
+        const f = typeof file === "string" ? getFile(file) : file;
+        if (f && f.onOpen && typeof f.onOpen !== "string") {
+            f.onOpen(system);
         }
     }
 
