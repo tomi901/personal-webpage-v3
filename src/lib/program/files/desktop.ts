@@ -1,4 +1,5 @@
 import FileExplorer from "$components/FileExplorer.svelte";
+import AboutPage from "$components/pages/AboutPage.svelte";
 import { SOURCE_CODE } from "$lib/constants";
 import { ICON_DIRECTORY, ICON_EXTERNAL_PAGE as ICON_SOURCE_CODE, ICON_HTML } from "$lib/constants/icons";
 import type { ExecutableFile } from "../File";
@@ -13,7 +14,7 @@ export const files: ExecutableFile[] = [
         yPos: 0,
         icon: ICON_HTML,
         onOpen(system) {
-            system.openWindow("/programs/tomas_rinaldi.html", {
+            system.openWindow(AboutPage, {
                 programId: this.id,
                 title: this.name,
                 width: 800,

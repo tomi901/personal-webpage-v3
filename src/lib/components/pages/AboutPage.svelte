@@ -3,7 +3,7 @@
 	import { SOURCE_CODE } from "$lib/constants";
 </script>
 
-<article>
+<article class="default">
     <h1>About me</h1>
 
     <p>
@@ -61,7 +61,7 @@
 
 <style>
     article {
-        padding: 40px 40px;
+        padding: 40px 80px;
         text-align: justify;
         max-width: 800px;
         margin: auto;

@@ -129,5 +129,11 @@
         border: 6px solid transparent;
         border-image: url("/UI/window_border.png") 3 round;
         image-rendering: crisp-edges;
+
+        overflow: auto;
+    }
+
+    main > :global(*) {
+        image-rendering: auto;
     }
 </style>
