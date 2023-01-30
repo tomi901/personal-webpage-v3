@@ -1,6 +1,7 @@
 <script lang="ts">
     import { createEventDispatcher } from 'svelte';
     import { scale } from 'svelte/transition';
+    import { backOut } from 'svelte/easing';
 
     const dispatch = createEventDispatcher();
 
@@ -25,7 +26,7 @@
     style:width={asCssPosition(width)}
     style:top={asCssPosition(y)}
     style:left={asCssPosition(x)}
-    transition:scale={{ duration: 100 }}
+    transition:scale={{ duration: 200, easing: backOut }}
     >
     <header>
         <div class="window-info">
