@@ -5,6 +5,7 @@ import { ICON_DIRECTORY, ICON_EXTERNAL_PAGE as ICON_SOURCE_CODE, ICON_HTML } fro
 import type { ExecutableFile } from "../File";
 import { componentWithProps } from "../system";
 import games from "./games";
+import PersonalAbout from "../../components/pages/PersonalAbout.svelte";
 
 export const files: ExecutableFile[] = [
     {
@@ -33,6 +34,22 @@ export const files: ExecutableFile[] = [
             system.openWindow(componentWithProps(FileExplorer, { files: games }), {
                 programId: this.id,
                 title: this.name,
+            });
+        },
+    },
+    {
+        id: "cool_webpage.html",
+        name: "My Cool Webpage.html",
+        xPos: 1,
+        yPos: 2,
+        icon: ICON_HTML,
+        onOpen(system) {
+            system.openWindow(PersonalAbout, {
+                programId: this.id,
+                title: this.name,
+                width: 800,
+                height: 600,
+                maximized: true,
             });
         },
     },

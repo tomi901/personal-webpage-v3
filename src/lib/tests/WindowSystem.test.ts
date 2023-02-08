@@ -35,7 +35,7 @@ describe("WindowSystem.svelte", () => {
         expect(iframe?.src).toBe(src);
     });
 
-    it("Opens with svelte simple component class", () => {
+    it("Opens with svelte simple component", () => {
         const file = testFileOpen(TestElement);
 
         const target = render(WindowSystem, { startWithFiles: [file] });
@@ -43,7 +43,7 @@ describe("WindowSystem.svelte", () => {
         expect(target.getByText("TEST ELEMENT")).toBeInTheDocument();
     });
 
-    it("Opens with svelte simple component class", () => {
+    it("Opens with svelte component with props", () => {
         const file = testFileOpen(componentWithProps(TestElement, { name: "John" }));
 
         const target = render(WindowSystem, { startWithFiles: [file] });
