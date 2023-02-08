@@ -54,7 +54,12 @@
 
     <p>
         For lower level languagues I'm more of a fan of <b>Rust</b> over <b>C++</b> or <b>C</b>, I really like many of the approachs it
-        takes with error and null values handling. For desktop apps (And possibly mobile apps in a future) I use <b>Tauri</b>, which combines
+        takes with error and null values handling. It also really gives a high-level programming to a low-level language with syntactic
+        sugar like pattern matching and many useful macros (Which you can create as well!).
+    </p>
+
+    <p>
+        For desktop apps (And possibly mobile apps in a future) I use <b>Tauri</b>, which combines
         a web frontend with a <b>Rust</b> backend, and of course, I use a <b>Svelte</b> frontend with it.
     </p>
 </article>

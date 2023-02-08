@@ -7,7 +7,7 @@
 <div class="parent-container">
     <div class="img-container" style:height={height}>
         {#each images as image}
-            <img src={image.src} alt={image.alt} />
+            <img loading="lazy" src={image.src} alt={image.alt} />
         {/each}
     </div>
     {#if footer && footer !== ""}
