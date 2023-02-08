@@ -13,7 +13,7 @@
     const contextSystem = getContextSystem();
 
     function asGridPos(n?: number) {
-        return n !== undefined ? n + 1 : 1;
+        return n !== undefined ? n + 1 : null;
     }
 
     function onClick() {
