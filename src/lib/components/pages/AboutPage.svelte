@@ -53,9 +53,13 @@
     ]} />
 
     <p>
-        For lower level languagues I'm more of a fan of <b>Rust</b> over <b>C++</b> or <b>C</b>, I really like many of the approachs it
-        takes with error and null values handling. It also really gives a high-level programming to a low-level language with syntactic
+        For lower level languagues I'm more of a fan of <b>Rust</b> over <b>C++</b> or <b>C</b>, I really like many of the approaches it
+        takes with error and optional values handling. It also really gives a high-level programming to a low-level language with syntactic
         sugar like pattern matching and many useful macros (Which you can create as well!).
+    </p>
+
+    <p>
+        I Really hope to see Rust in the industry and job applications in the near future!
     </p>
 
     <p>
