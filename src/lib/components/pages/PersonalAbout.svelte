@@ -1,4 +1,8 @@
-﻿<article class="rel-pos">
+﻿<script>
+	import VisitCounter from "$components/VisitCounter.svelte";
+
+</script>
+<article class="rel-pos">
     <section class="rel-pos" style="background: url(/CoolWebpage/bg.png); padding-bottom: 0;">
         <img loading="lazy" src="/CoolWebpage/skeletonworm.gif" alt="Skeleton doing the worm" class="abs-pos" width="128px" style="transform: translateY(-64px)" />
         <img loading="lazy" src="/CoolWebpage/welcome2.gif" alt="Welcome" width="512px" />
@@ -11,6 +15,8 @@
         <p>That means you can see this page anywhere in the world!</p>
 
         <img loading="lazy" src="/CoolWebpage/velociraptor.gif" alt="Velociraptor" height="128px" />
+
+        <VisitCounter visitId="retro_page" />
     </section>
 
     <div class="rel-pos">
