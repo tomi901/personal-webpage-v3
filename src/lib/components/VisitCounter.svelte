@@ -1,19 +1,24 @@
 <script lang="ts">
-	import { incrementVisit } from "$lib/services/visits";
 	import { onMount } from "svelte";
 
     export let visitId: string;
 
-    let visits: Promise<number>;
+    let visits: Promise<number> = new Promise(() => {});
     onMount(() => {
-        visits = incrementVisit(visitId);
+        visits = incrementVisit();
     });
+
+    async function incrementVisit() {
+        const response = await fetch(`/api/visits/${visitId}`, { method: "PUT" })
+            .then(r => r.json());
+        return Number(response);
+    }
 </script>
 
 {#await visits}
-    <p>Loading visits...</p>
+    <p>Visits: (Loading...)</p>
 {:then amount}
-    <p>{amount} visit(s)</p>
+    <p>Visits: {amount}</p>
 {:catch error}
-    <p>Cannot load visits ({error})</p>
+    <p>Visits: [ERROR]</p>
 {/await}
