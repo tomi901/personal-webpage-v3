@@ -113,12 +113,13 @@
     
     h1 {
         font-family: 'Times New Roman', Times, serif;
-    }
-    
-    h1 {
-        color: yellow;
+
         font-size: 3rem;
         margin-top: 0;
+
+        background: -webkit-linear-gradient(yellow, orange);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 
     p {
