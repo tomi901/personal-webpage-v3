@@ -1,7 +1,12 @@
 ﻿<script>
 	import VisitCounter from "$components/VisitCounter.svelte";
+    import MusicPlayer from "$components/MusicPlayer.svelte";
 
+    import music from "$lib/assets/audio/BasketCase.mp3";
 </script>
+
+<MusicPlayer src={music} />
+
 <article class="rel-pos">
     <section class="rel-pos" style="background: url(/CoolWebpage/bg.png); padding-bottom: 0;">
         <img loading="lazy" src="/CoolWebpage/skeletonworm.gif" alt="Skeleton doing the worm" class="abs-pos" width="128px" style="transform: translateY(-64px)" />
