@@ -40,7 +40,7 @@ export const files: ExecutableFile[] = [
     {
         id: "cool_webpage.html",
         name: "My Cool Webpage.html",
-        xPos: 1,
+        xPos: -3,
         yPos: 2,
         icon: ICON_HTML,
         onOpen(system) {
