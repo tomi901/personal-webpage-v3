@@ -1,11 +1,12 @@
 import FileExplorer from "$components/FileExplorer.svelte";
 import AboutPage from "$components/pages/AboutPage.svelte";
 import { SOURCE_CODE } from "$lib/constants";
-import { ICON_DIRECTORY, ICON_EXTERNAL_PAGE as ICON_SOURCE_CODE, ICON_HTML } from "$lib/constants/icons";
+import { ICON_DIRECTORY, ICON_EXTERNAL_PAGE as ICON_SOURCE_CODE, ICON_HTML, ICON_PHONE } from "$lib/constants/icons";
 import type { ExecutableFile } from "../File";
 import { componentWithProps } from "../system";
 import games from "./games";
 import PersonalAbout from "../../components/pages/PersonalAbout.svelte";
+import ContactPage from "$components/pages/ContactPage.svelte";
 
 export const files: ExecutableFile[] = [
     {
@@ -54,10 +55,26 @@ export const files: ExecutableFile[] = [
         },
     },
     {
+        id: "contact_me",
+        name: "Contact me.html",
+        xPos: 0,
+        yPos: 3,
+        icon: ICON_PHONE,
+        onOpen(system) {
+            system.openWindow(ContactPage, {
+                programId: this.id,
+                title: this.name,
+                width: 800,
+                height: 600,
+                maximized: true,
+            });
+        },
+    },
+    {
         id: "source_code",
         name: "Page Source Code",
         xPos: 0,
-        yPos: 3,
+        yPos: 4,
         icon: ICON_SOURCE_CODE,
         onOpen: SOURCE_CODE,
     },
