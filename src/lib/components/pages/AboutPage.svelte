@@ -35,7 +35,10 @@
         on it.
     </p>
 
-    <PlayButton id="urban_explorers.exe" />
+    <div class="links">
+        <PlayButton id="urban_explorers.exe" />
+        <a href="https://parenthesix.itch.io/urban-explorers" target="_blank" rel="noreferrer">Itch.io page</a>
+    </div>
 
     <div class="yt-center">
         <iframe width="560" height="315"
@@ -84,7 +87,10 @@
         cable connection using <strong>Mechanics</strong> or dodge a punch using <strong>Primal Instinct</strong>.
     </p>
 
-    <a href="https://tomi-rinaldi.itch.io/rat-dystopia" target="_blank" rel="noreferrer">Download it in itch.io</a>
+    <div class="links">
+        <PlayButton id="rat-dystopia.exe" />
+        <a href="https://tomi-rinaldi.itch.io/rat-dystopia" target="_blank" rel="noreferrer">Itch.io page</a>
+    </div>
 
     <div class="yt-center">
         <iframe width="560" height="315"
@@ -190,5 +196,11 @@
         margin-top: 24px;
         display: flex;
         justify-content: center;
+    }
+
+    .links {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
     }
 </style>

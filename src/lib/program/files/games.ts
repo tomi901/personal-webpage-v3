@@ -13,6 +13,12 @@ export const files: ExecutableFile[] = [
         name: "Urban Explorers.exe",
         windowTitle: "Urban Explorers",
     }),
+    game("https://rat-dystopia.web.app/", {
+        id: "rat-dystopia.exe",
+        icon: "rat_dystopia.png",
+        name: "Rat Dystopia.exe",
+        windowTitle: "Rat Dystopia",
+    }),
 ];
 
 function game(url: string, options: { id: string, name: string, icon: string, windowTitle: string }): ExecutableFile {
