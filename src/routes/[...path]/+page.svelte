@@ -3,7 +3,7 @@
 	import WindowSystem from "$lib/components/WindowSystem.svelte";
     import files from "$lib/program/files/desktop";
 
-	export let data: import('./$types').PageData;
+	export let data;
 </script>
 
 <svelte:head>

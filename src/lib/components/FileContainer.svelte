@@ -2,7 +2,7 @@
 	import type { ExecutableFile } from "$lib/program/File";
 	import FileElement from "./FileElement.svelte";
 
-    export let files: ExecutableFile[]
+    export let files: ExecutableFile[];
 </script>
 
 <div class="files-container">
