@@ -1,29 +1,24 @@
 <script lang="ts">
-	import { onMount } from "svelte";
+    import { getFirebaseContext } from "sveltefire";
+	import { getAndIncrementVisit } from "$lib/stores/visits";
 
     export let visitId: string;
 
+    const rtdb = getFirebaseContext().rtdb;
+    if (!rtdb) {
+        throw new Error("Realtime Database not found");
+    }
     const LEADING_ZEROES = "0000000";
-    let counter = "-------";
+    const COUNTER_DEFAULT = "-------";
+    let counter = COUNTER_DEFAULT;
 
-    onMount(async () => {
-        const data: number = await fetch(`/api/visits/${visitId}`, { method: "PUT" })
-            .then(throwOnErrorStatus)
-            .then(r => r.json())
-            .catch(e => {
-                console.error(e);
-                return "[ERROR]"
-            });
+    const visits = getAndIncrementVisit(rtdb, visitId);
 
-        counter = LEADING_ZEROES + data;
-        counter = counter.substring(counter.length - LEADING_ZEROES.length);
-    });
-
-    function throwOnErrorStatus(response: Response): Response {
-        if (response.status >= 400) {
-            throw response;
-        }
-        return response;
+    $: {
+        const visitsString = $visits?.toString();
+        counter = visitsString ?
+            (LEADING_ZEROES + visitsString).slice(-Math.max(LEADING_ZEROES.length, visitsString.length)) :
+            COUNTER_DEFAULT;
     }
 </script>
 
