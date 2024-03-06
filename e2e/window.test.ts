@@ -1,12 +1,11 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from "@playwright/test";
 
 test.describe("Window tests", async () => {
-	
 	async function startWithDefaultWindow(page: Page) {
 		await page.goto("/");
 		return await openWindowWithDefaultFile(page);
 	}
-	
+
 	async function openWindowWithDefaultFile(page: Page) {
 		const file = page.locator(".file").first();
 		await file.click();
@@ -38,19 +37,23 @@ test.describe("Window tests", async () => {
 		const window = await startWithDefaultWindow(page);
 		const maximizedClass = /maximized/;
 
-		const wasMaximized = await window.getAttribute("class").then(c => !!c && maximizedClass.test(c));
+		const wasMaximized = await window
+			.getAttribute("class")
+			.then((c) => !!c && maximizedClass.test(c));
 
 		const maximizeButton = window.locator("button.maximize-btn");
 		await expect(maximizeButton).toBeVisible();
-		
+
 		await maximizeButton.click();
 		await checkMaximizedClass(!wasMaximized);
-		
+
 		await maximizeButton.click();
 		await checkMaximizedClass(wasMaximized);
 
 		function checkMaximizedClass(shouldHaveIt: boolean) {
-			return shouldHaveIt ? expect(window).toHaveClass(maximizedClass) : expect(window).not.toHaveClass(maximizedClass);
+			return shouldHaveIt
+				? expect(window).toHaveClass(maximizedClass)
+				: expect(window).not.toHaveClass(maximizedClass);
 		}
 	});
 });

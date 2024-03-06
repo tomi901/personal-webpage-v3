@@ -9,46 +9,46 @@ import TestElement from "./TestElement.svelte";
 import { componentWithProps } from "$lib/program/system";
 
 describe("WindowSystem.svelte", () => {
-    function testFile(onOpen?: (system: OperativeSystem) => void): ExecutableFile {
-        return {
-            id: "test",
-            icon: "icon.png",
-            name: "Test",
-            onOpen,
-        }
-    }
+	function testFile(onOpen?: (system: OperativeSystem) => void): ExecutableFile {
+		return {
+			id: "test",
+			icon: "icon.png",
+			name: "Test",
+			onOpen
+		};
+	}
 
-    function testFileOpen(content: Content) {
-        return testFile((system) => {
-            system.openWindow(content);
-        });
-    }
-    
-    it("Opens a window to iframe", () => {
-        const src = "https://www.google.com/";
-        const file = testFileOpen(src);
-        
-        const target = render(WindowSystem, { startWithFiles: [file] });
+	function testFileOpen(content: Content) {
+		return testFile((system) => {
+			system.openWindow(content);
+		});
+	}
 
-        const iframe = target.container.querySelector<HTMLIFrameElement>(".window iframe");
-        expect(iframe).toBeInTheDocument();
-        expect(iframe?.src).toBe(src);
-    });
+	it("Opens a window to iframe", () => {
+		const src = "https://www.google.com/";
+		const file = testFileOpen(src);
 
-    it("Opens with svelte simple component", () => {
-        const file = testFileOpen(TestElement);
+		const target = render(WindowSystem, { startWithFiles: [file] });
 
-        const target = render(WindowSystem, { startWithFiles: [file] });
+		const iframe = target.container.querySelector<HTMLIFrameElement>(".window iframe");
+		expect(iframe).toBeInTheDocument();
+		expect(iframe?.src).toBe(src);
+	});
 
-        expect(target.getByText("TEST ELEMENT")).toBeInTheDocument();
-    });
+	it("Opens with svelte simple component", () => {
+		const file = testFileOpen(TestElement);
 
-    it("Opens with svelte component with props", () => {
-        const file = testFileOpen(componentWithProps(TestElement, { name: "John" }));
+		const target = render(WindowSystem, { startWithFiles: [file] });
 
-        const target = render(WindowSystem, { startWithFiles: [file] });
+		expect(target.getByText("TEST ELEMENT")).toBeInTheDocument();
+	});
 
-        expect(target.getByText("TEST ELEMENT")).toBeInTheDocument();
-        expect(target.getByText("Hello John")).toBeInTheDocument();
-    });
+	it("Opens with svelte component with props", () => {
+		const file = testFileOpen(componentWithProps(TestElement, { name: "John" }));
+
+		const target = render(WindowSystem, { startWithFiles: [file] });
+
+		expect(target.getByText("TEST ELEMENT")).toBeInTheDocument();
+		expect(target.getByText("Hello John")).toBeInTheDocument();
+	});
 });

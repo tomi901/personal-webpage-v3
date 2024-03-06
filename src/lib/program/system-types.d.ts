@@ -5,14 +5,18 @@ import type { ProgramWindowOptions } from "./ProgramWindow";
 export type AnyProps = Record<string, any>;
 
 export type URLString = string;
-export type Content = URLString | (typeof SvelteComponent) | ComponentTypeWithProps<AnyProps>;
+export type Content = URLString | typeof SvelteComponent | ComponentTypeWithProps<AnyProps>;
 
 export interface ComponentTypeWithProps<Props extends AnyProps> {
-    component: typeof SvelteComponentTyped<Props>;
-    props: Props;
+	component: typeof SvelteComponentTyped<Props>;
+	props: Props;
 }
 
 export interface OperativeSystem {
-    openWindow: (content: Content, windowOptions?: Partial<ProgramWindowOptions>, forceNew?: boolean) => void;
-    goto: (url: URLString) => Promise<void>;
+	openWindow: (
+		content: Content,
+		windowOptions?: Partial<ProgramWindowOptions>,
+		forceNew?: boolean
+	) => void;
+	goto: (url: URLString) => Promise<void>;
 }

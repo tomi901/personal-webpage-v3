@@ -1,141 +1,230 @@
 ﻿<script>
 	import VisitCounter from "$components/VisitCounter.svelte";
-    import MusicPlayer from "$components/MusicPlayer.svelte";
+	import MusicPlayer from "$components/MusicPlayer.svelte";
 
-    import music from "$lib/assets/audio/BasketCase.mp3";
+	import music from "$lib/assets/audio/BasketCase.mp3";
 </script>
 
 <MusicPlayer src={music} />
 
 <article class="rel-pos">
-    <section class="rel-pos" style="background: url(/CoolWebpage/bg.png); padding-bottom: 0;">
-        <img loading="lazy" src="/CoolWebpage/skeletonworm.gif" alt="Skeleton doing the worm" class="abs-pos" width="128px" style="transform: translateY(-64px)" />
-        <img loading="lazy" src="/CoolWebpage/welcome2.gif" alt="Welcome" width="512px" />
-        <img loading="lazy" src="/CoolWebpage/explosion.gif" alt="Explosion" class="abs-pos" width="128px" style="transform: translateX(-320px)" />
-        <img loading="lazy" src="/CoolWebpage/explosion.gif" alt="Explosion" class="abs-pos" width="128px" style="transform: translateX(320px)" />
-        <h1>Tom Rinaldi's Webpage!</h1>
-        
-        <p>My name is Tomás (Or Tom) Rinaldi and <br /> this is my webpage on the Internet</p>
-        <img loading="lazy" src="/CoolWebpage/world.gif" alt="Earth" width="128px" />
-        <p>That means you can see this page anywhere in the world!</p>
+	<section class="rel-pos" style="background: url(/CoolWebpage/bg.png); padding-bottom: 0;">
+		<img
+			loading="lazy"
+			src="/CoolWebpage/skeletonworm.gif"
+			alt="Skeleton doing the worm"
+			class="abs-pos"
+			width="128px"
+			style="transform: translateY(-64px)"
+		/>
+		<img loading="lazy" src="/CoolWebpage/welcome2.gif" alt="Welcome" width="512px" />
+		<img
+			loading="lazy"
+			src="/CoolWebpage/explosion.gif"
+			alt="Explosion"
+			class="abs-pos"
+			width="128px"
+			style="transform: translateX(-320px)"
+		/>
+		<img
+			loading="lazy"
+			src="/CoolWebpage/explosion.gif"
+			alt="Explosion"
+			class="abs-pos"
+			width="128px"
+			style="transform: translateX(320px)"
+		/>
+		<h1>Tom Rinaldi's Webpage!</h1>
 
-        <img loading="lazy" src="/CoolWebpage/velociraptor.gif" alt="Velociraptor" height="128px" />
+		<p>My name is Tomás (Or Tom) Rinaldi and <br /> this is my webpage on the Internet</p>
+		<img loading="lazy" src="/CoolWebpage/world.gif" alt="Earth" width="128px" />
+		<p>That means you can see this page anywhere in the world!</p>
 
-        <VisitCounter visitId="retro_page" />
-    </section>
+		<img loading="lazy" src="/CoolWebpage/velociraptor.gif" alt="Velociraptor" height="128px" />
 
-    <div class="rel-pos">
-        <div class="abs-pos" style="transform: translate(30%, -100px) rotate(-10deg); z-index: 100">
-            <p><b>Placing stuff in HTML is tough!</b></p>
-            <img loading="lazy" src="/CoolWebpage/programmer.gif" alt="Hitting head against keyboard" width="128px" />
-        </div>
-    </div>
+		<VisitCounter visitId="retro_page" />
+	</section>
 
-    <section class="rel-pos second" style="border-top: 8px solid gray; padding-bottom: 0;">
-        <div class="rel-pos" style="display: flex; flex-direction: row; gap: 60px; margin-bottom: 40px;">
-            <img loading="lazy" src="/CoolWebpage/Guitar.gif" alt="Guitar" width="128px" />
-            <img loading="lazy" src="/CoolWebpage/guitarist1.gif" alt="Guitarist" width="128px" />
-        </div>
-        <p>I play the electric guitar, a blue one like the one above. I can play some Green Day and Beatles songs.</p>
+	<div class="rel-pos">
+		<div class="abs-pos" style="transform: translate(30%, -100px) rotate(-10deg); z-index: 100">
+			<p><b>Placing stuff in HTML is tough!</b></p>
+			<img
+				loading="lazy"
+				src="/CoolWebpage/programmer.gif"
+				alt="Hitting head against keyboard"
+				width="128px"
+			/>
+		</div>
+	</div>
 
-        <img loading="lazy" src="/CoolWebpage/notespin.gif" alt="Musical note" class="abs-pos"
-            style="transform: translate(450px, 350px) rotate(10deg);" width="128px" />
-        <img loading="lazy" src="/CoolWebpage/note.gif" alt="Musical note" class="abs-pos"
-            style="transform: translate(-450px, 350px) rotate(-10deg);" width="64px" />
+	<section class="rel-pos second" style="border-top: 8px solid gray; padding-bottom: 0;">
+		<div
+			class="rel-pos"
+			style="display: flex; flex-direction: row; gap: 60px; margin-bottom: 40px;"
+		>
+			<img loading="lazy" src="/CoolWebpage/Guitar.gif" alt="Guitar" width="128px" />
+			<img loading="lazy" src="/CoolWebpage/guitarist1.gif" alt="Guitarist" width="128px" />
+		</div>
+		<p>
+			I play the electric guitar, a blue one like the one above. I can play some Green Day and
+			Beatles songs.
+		</p>
 
-        <img loading="lazy" src="/CoolWebpage/spinstar.gif" alt="Star" class="abs-pos"
-            style="transform: translate(-350px, 200px);" width="64px" />
-        <img loading="lazy" src="/CoolWebpage/spinstar.gif" alt="Star" class="abs-pos"
-            style="transform: translate(350px, 200px);" width="64px" />
-            
-        <img loading="lazy" src="/CoolWebpage/doot.gif" alt="Doot" width="128px" />
-        
-        <p>I also sing from time to time some of the songs I play on guitar.</p>
+		<img
+			loading="lazy"
+			src="/CoolWebpage/notespin.gif"
+			alt="Musical note"
+			class="abs-pos"
+			style="transform: translate(450px, 350px) rotate(10deg);"
+			width="128px"
+		/>
+		<img
+			loading="lazy"
+			src="/CoolWebpage/note.gif"
+			alt="Musical note"
+			class="abs-pos"
+			style="transform: translate(-450px, 350px) rotate(-10deg);"
+			width="64px"
+		/>
 
-        <img loading="lazy" src="/CoolWebpage/musicline14.gif" style="margin: 30px 0;" alt="Divider" width="512px" />
+		<img
+			loading="lazy"
+			src="/CoolWebpage/spinstar.gif"
+			alt="Star"
+			class="abs-pos"
+			style="transform: translate(-350px, 200px);"
+			width="64px"
+		/>
+		<img
+			loading="lazy"
+			src="/CoolWebpage/spinstar.gif"
+			alt="Star"
+			class="abs-pos"
+			style="transform: translate(350px, 200px);"
+			width="64px"
+		/>
 
-    </section>
+		<img loading="lazy" src="/CoolWebpage/doot.gif" alt="Doot" width="128px" />
 
-    <section class="rel-pos second" style="padding-top: 0;">
-        <hr />
+		<p>I also sing from time to time some of the songs I play on guitar.</p>
 
-        <img loading="lazy" src="/CoolWebpage/codebar.gif" alt="Code" height="256px" class="abs-pos"
-            style="transform: translate(-350px, 380px);" />
-        <img loading="lazy" src="/CoolWebpage/codebar.gif" alt="Code" height="256px" class="abs-pos"
-            style="transform: translate(350px, 380px);" />
+		<img
+			loading="lazy"
+			src="/CoolWebpage/musicline14.gif"
+			style="margin: 30px 0;"
+			alt="Divider"
+			width="512px"
+		/>
+	</section>
 
-        <img loading="lazy" src="/CoolWebpage/TuxProgramming.gif" alt="Tux Programming" width="256px" />
-        <p>I like programming stuff like webpages or even videogames, make sure to check all of them on my main page.</p>
+	<section class="rel-pos second" style="padding-top: 0;">
+		<hr />
 
-        <p>I started programming since I was 14, I liked playing videogames and I wanted to make my own.</p>
+		<img
+			loading="lazy"
+			src="/CoolWebpage/codebar.gif"
+			alt="Code"
+			height="256px"
+			class="abs-pos"
+			style="transform: translate(-350px, 380px);"
+		/>
+		<img
+			loading="lazy"
+			src="/CoolWebpage/codebar.gif"
+			alt="Code"
+			height="256px"
+			class="abs-pos"
+			style="transform: translate(350px, 380px);"
+		/>
 
-        <p>
-            Now I'm doing what I wanted when I was a kid, I'm working in the AAA game industry.
-            And soon on my own games.
-        </p>
+		<img loading="lazy" src="/CoolWebpage/TuxProgramming.gif" alt="Tux Programming" width="256px" />
+		<p>
+			I like programming stuff like webpages or even videogames, make sure to check all of them on
+			my main page.
+		</p>
 
-        <img loading="lazy" src="/CoolWebpage/code.gif" alt="Code" style="margin-top: 60px;" height="100px" />
+		<p>
+			I started programming since I was 14, I liked playing videogames and I wanted to make my own.
+		</p>
 
-        <img loading="lazy" src="/CoolWebpage/skeleton.gif" alt="Skeleton" style="margin-top: 60px;" width="128px" />
-    </section>
-    
+		<p>
+			Now I'm doing what I wanted when I was a kid, I'm working in the AAA game industry. And soon
+			on my own games.
+		</p>
+
+		<img
+			loading="lazy"
+			src="/CoolWebpage/code.gif"
+			alt="Code"
+			style="margin-top: 60px;"
+			height="100px"
+		/>
+
+		<img
+			loading="lazy"
+			src="/CoolWebpage/skeleton.gif"
+			alt="Skeleton"
+			style="margin-top: 60px;"
+			width="128px"
+		/>
+	</section>
 </article>
 
 <style>
-    article {
-        min-height: 100%;
-        min-width: 100%;
-        box-sizing: border-box;
-        
-        text-align: center;
-        color: white;
-        font-size: 1.25em;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-        
-        display: flex;
-        flex-direction: column;
-        justify-content: stretch;
-        align-items: stretch;
-    }
+	article {
+		min-height: 100%;
+		min-width: 100%;
+		box-sizing: border-box;
 
-    hr {
-        border-top: 5px solid #bbbbbb;
-        width: 100%;
-        max-width: 1024px;
-        margin: 50px 0 100px 0;
-    }
+		text-align: center;
+		color: white;
+		font-size: 1.25em;
+		font-family: Verdana, Geneva, Tahoma, sans-serif;
 
-    section {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 92px 48px;
-    }
+		display: flex;
+		flex-direction: column;
+		justify-content: stretch;
+		align-items: stretch;
+	}
 
-    section.second {
-        background: url(/CoolWebpage/velvet01.jpg);
-    }
-    
-    h1 {
-        font-family: 'Times New Roman', Times, serif;
+	hr {
+		border-top: 5px solid #bbbbbb;
+		width: 100%;
+		max-width: 1024px;
+		margin: 50px 0 100px 0;
+	}
 
-        font-size: 3rem;
-        margin-top: 0;
+	section {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 92px 48px;
+	}
 
-        background: -webkit-linear-gradient(yellow, orange);
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
+	section.second {
+		background: url(/CoolWebpage/velvet01.jpg);
+	}
 
-    p {
-        max-width: 512px;
-    }
-    
-    .abs-pos {
-        position: absolute;
-    }
+	h1 {
+		font-family: "Times New Roman", Times, serif;
 
-    .rel-pos {
-        position: relative;
-    }
+		font-size: 3rem;
+		margin-top: 0;
+
+		background: -webkit-linear-gradient(yellow, orange);
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	p {
+		max-width: 512px;
+	}
+
+	.abs-pos {
+		position: absolute;
+	}
+
+	.rel-pos {
+		position: relative;
+	}
 </style>

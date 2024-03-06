@@ -4,23 +4,23 @@ import type { AnyProps, ComponentTypeWithProps, OperativeSystem } from "./system
 const key = Symbol();
 
 export function getContextKeyValue(system: OperativeSystem): [symbol, OperativeSystem] {
-    return [key, system];
+	return [key, system];
 }
 
 export function setContextSystem(system: OperativeSystem) {
-    return setContext(key, system);
+	return setContext(key, system);
 }
 
 export function getContextSystem() {
-    return getContext<OperativeSystem>(key);
+	return getContext<OperativeSystem>(key);
 }
 
 export function componentWithProps<Props extends AnyProps>(
-    component: typeof SvelteComponentTyped<Props>,
-    props: Props,
+	component: typeof SvelteComponentTyped<Props>,
+	props: Props
 ): ComponentTypeWithProps<Props> {
-    return {
-        component,
-        props,
-    };
+	return {
+		component,
+		props
+	};
 }
