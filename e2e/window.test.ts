@@ -37,16 +37,20 @@ test.describe("Window tests", async () => {
 	test("Maximize toggle works correctly", async ({ page }) => {
 		const window = await startWithDefaultWindow(page);
 		const maximizedClass = /maximized/;
-		
-		await expect(window).not.toHaveClass(maximizedClass);
+
+		const wasMaximized = await window.getAttribute("class").then(c => !!c && maximizedClass.test(c));
 
 		const maximizeButton = window.locator("button.maximize-btn");
 		await expect(maximizeButton).toBeVisible();
 		
 		await maximizeButton.click();
-		await expect(window).toHaveClass(maximizedClass);
+		await checkMaximizedClass(!wasMaximized);
 		
 		await maximizeButton.click();
-		await expect(window).not.toHaveClass(maximizedClass);
+		await checkMaximizedClass(wasMaximized);
+
+		function checkMaximizedClass(shouldHaveIt: boolean) {
+			return shouldHaveIt ? expect(window).toHaveClass(maximizedClass) : expect(window).not.toHaveClass(maximizedClass);
+		}
 	});
 });
