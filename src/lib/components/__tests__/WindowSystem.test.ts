@@ -1,5 +1,5 @@
 ﻿import { describe, it, expect } from "vitest";
-import "@testing-library/jest-dom"
+import "@testing-library/jest-dom/vitest";
 import { render } from "@testing-library/svelte";
 
 import WindowSystem from "$components/WindowSystem.svelte";

@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
-import "@testing-library/jest-dom"
 import { render, fireEvent } from "@testing-library/svelte";
+import "@testing-library/jest-dom/vitest";
 
 import FileElement from "$components/FileElement.svelte";
 import type { ExecutableFile } from "$lib/program/File";
@@ -54,8 +54,8 @@ describe("FileElement.svelte", () => {
     });
 
     it("Displays name", async () => {
-        const name = "Trust me, I'm a dolphin.exe"
-        const file = createFile({ name })
+        const name = "Trust me, I'm a dolphin.exe";
+        const file = createFile({ name });
 
         const element = render(FileElement, { file });
 
