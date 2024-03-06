@@ -55,6 +55,9 @@
         flex-direction: column;
         align-items: center;
         cursor: pointer;
+        background: none;
+        border: none;
+        font-family: inherit;
 
         color: inherit;
         text-decoration: inherit;
@@ -71,7 +74,7 @@
         padding: 0;
         max-width: 100%;
 
-        font-size: 0.9rem;
+        font-size: 0.8rem;
 
         text-align: center;
         overflow: hidden;
