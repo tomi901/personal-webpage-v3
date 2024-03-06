@@ -38,7 +38,7 @@
     <p>{name}</p>
 </a>
 {:else}
-<div class="file"
+<button class="file"
     style:grid-column={asGridPos(xPos)}
     style:grid-row={asGridPos(yPos)}
     on:click={onClick}
@@ -46,7 +46,7 @@
     >
     <img alt={name} src={icon} />
     <p>{name}</p>
-</div>
+</button>
 {/if}
 
 <style>
