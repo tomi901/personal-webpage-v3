@@ -14,6 +14,8 @@
 		PUBLIC_FIREBASE_PROJECT_ID
 	} from "$env/static/public";
 
+	// import background from "$lib/assets/images/backgrounds/lizard_on_beach_dithered.png";
+
 	const app = initializeApp({
 		apiKey: PUBLIC_FIREBASE_API_KEY,
 		appId: PUBLIC_FIREBASE_APP_ID,
@@ -31,21 +33,46 @@
 
 <FirebaseApp rtdb={db}>
 	<WindowSystem startWithFiles={data.startWithFile ? [data.startWithFile] : []}>
-		<main><FileContainer {files} /></main>
+		<main>
+			<div class="background background-color" />
+			<!-- div style="background-image: url({background})" class="background background-image" /-->
+			<FileContainer {files} />
+		</main>
 	</WindowSystem>
 </FirebaseApp>
 
 <style>
 	main {
 		padding: 32px;
-	}
-	:global(html) {
-		background-color: hsl(164, 86%, 16%);
+		min-height: 100vh;
+		box-sizing: border-box;
+
 		color: rgb(254 243 199);
 	}
+
+	.background {
+		z-index: -2;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	.background-image {
+		background-size: cover;
+		background-position: center;
+		opacity: 0.5;
+	}
+
+	.background-color {
+		background-color: hsl(164, 86%, 16%);
+	}
+
 	:global(body) {
 		margin: 0;
 	}
+
 	:global(code) {
 		font-family:
 			Menlo,
