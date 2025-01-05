@@ -79,7 +79,6 @@
 		word-wrap: break-word;
 		max-lines: 2;
 
-		font-weight: bold;
 		text-shadow: 1px 1px 4px black;
 	}
 </style>
