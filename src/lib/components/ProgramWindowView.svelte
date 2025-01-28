@@ -92,6 +92,7 @@
 
 	.window-info {
 		flex-grow: 1;
+		color: var(--light-color);
 	}
 
 	.window-buttons {

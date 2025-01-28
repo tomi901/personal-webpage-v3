@@ -47,7 +47,7 @@
 		min-height: 100vh;
 		box-sizing: border-box;
 
-		color: rgb(254 243 199);
+		color: var(--light-color);
 	}
 
 	.background {

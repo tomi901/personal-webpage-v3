@@ -100,6 +100,8 @@
 		align-items: center;
 
 		padding: 0 10px;
+
+		color: white;
 	}
 
 	.player-text-container span {
