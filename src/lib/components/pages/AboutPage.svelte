@@ -1,10 +1,19 @@
 <script>
-	import PlayButton from "$components/PlayButton.svelte";
 	import Image from "$lib/components/Image.svelte";
+	import PageArticle from "$components/PageArticle.svelte";
 	import { SOURCE_CODE } from "$lib/constants";
+	import { getContextSystem } from "$lib/program/system";
+	import aboutFiles from "$lib/program/files/about";
+
+	const system = getContextSystem();
+
+	function openSection(file) {
+		file.onOpen?.(system);
+		system.goto(file.id);
+	}
 </script>
 
-<article class="default">
+<PageArticle>
 	<h1>About me</h1>
 
 	<p>
@@ -26,178 +35,13 @@
 		it.
 	</p>
 
-	<h4>Urban explorers</h4>
-
-	<p>
-		This is a game that started in 2019 which consisted of exploring abandoned places to get loot.
-		Altough we find some residents on these places who are not exactly people, so be prepared.
-	</p>
-
-	<p>
-		This is a 2D game that uses 2D illumination as a mechanic. The game ended up having some nice
-		graphics on it.
-	</p>
-
-	<div class="links">
-		<PlayButton id="urban_explorers.exe" />
-		<a href="https://parenthesix.itch.io/urban-explorers" target="_blank" rel="noreferrer"
-			>Itch.io page</a
-		>
-	</div>
-
-	<div class="yt-center">
-		<iframe
-			width="560"
-			height="315"
-			src="https://www.youtube.com/embed/dAmYwOt8vEY?si=1RV2od_tSX0Sss0x"
-			title="YouTube video player"
-			frameborder="0"
-			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-			allowfullscreen
-		>
-		</iframe>
-	</div>
-
-	<Image
-		footer="Urban explorers, a 2D urban exploration I made with an indie company"
-		images={[
-			{ src: "/Games/Screenshots/urban_explorers_1.jpg", alt: "Urban explorers screenshot" }
-		]}
-	/>
-
-	<h4>Floppa Adventure</h4>
-
-	<p>
-		This is a game that I made as to demonstrate how can I handle shaders and platforming controls
-		in 3D Unity. It includes cinematics made using Timeline with dialogue boxes. It also includes a
-		moveset like double jump and wall jumping.
-	</p>
-
-	<p>
-		The game includes retro aesthetics imitating PS1 and N64 graphics, using the Render Pipeline and
-		different filter layers. Giving the appeareance of a game that was released in the late 90s.
-	</p>
-
-	<PlayButton id="floppa_adventure.exe" />
-
-	<Image
-		footer="Retro graphics 3D platformer I made as a demo"
-		images={[
-			{
-				src: "/Games/Screenshots/floppa_game_1.jpg",
-				alt: "Retro graphics 3D platformer screenshot"
-			}
-		]}
-	/>
-
-	<h4>Rat Dystopia</h4>
-
-	<p>
-		This is a game where I had a lead role, it's a game inspired on <a
-			href="https://discoelysium.com/"
-			target="_blank"
-			rel="noreferrer"
-		>
-			Disco Elysium</a
-		>. An RPG where you use your abilities to overcome any obstacles you find, using either
-		intellectual, emotional or physical skills.
-	</p>
-
-	<p>
-		There's no combat exactly, but rather, stuff will happen and you will use your abilities in
-		response. Maybe convincing someone to sell you something for cheap using <strong
-			>Diplomacy</strong
-		>, repairing a faulty cable connection using <strong>Mechanics</strong> or dodge a punch using
-		<strong>Primal Instinct</strong>.
-	</p>
-
-	<div class="links">
-		<PlayButton id="rat-dystopia.exe" />
-		<a href="https://tomi-rinaldi.itch.io/rat-dystopia" target="_blank" rel="noreferrer"
-			>Itch.io page</a
-		>
-	</div>
-
-	<div class="yt-center">
-		<iframe
-			width="560"
-			height="315"
-			src="https://www.youtube.com/embed/lW0iksiDtgc?si=G42p0wGzonmxnL1R"
-			title="YouTube video player"
-			frameborder="0"
-			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-			allowfullscreen
-		>
-		</iframe>
-	</div>
-
-	<Image
-		footer="UI with dialogues and a Knowledge dice throw"
-		images={[{ src: "/Games/Screenshots/rd1.png", alt: "Rat dystopia screenshot with UI" }]}
-	/>
-
-	<Image
-		footer="Early concept for graphics"
-		images={[{ src: "/Games/Screenshots/rd2.png", alt: "Rat dystopia concept" }]}
-	/>
-
-	<h4>Zone 1-70</h4>
-
-	<p>
-		One of my best projects I had. A colony sim heavily inspired in classical RTS games
-		like Warcraft III, Starcraft, C&C and AoE where you explore and build bases in liminal
-		spaces.
-	</p>
-
-	<iframe
-		width="560"
-		height="315"
-		src="https://www.youtube.com/embed/5ysB7z5UR7w?si=5HcVq22T-X4swOJn"
-		title="YouTube video player"
-		frameborder="0"
-		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-		allowfullscreen
-	>
-	</iframe>
-
-	<p>
-		Send an expedition of scientists, investigate the zone, find anomalies and do experiments
-		to determine the anomaly. Discover its properties and unlock technology with the newly found
-		D.A.T.A.
-	</p>
-
-	<p>
-		Be careful, because t̷͙̆̉h̵͉͌͝ë̵̼͎͖́̊̕y̵̰̳͐ live inside the Zone, you will need more than machine guns to be
-		able to defend your base against them.
-	</p>
-
-	<p>
-		I worked as a designer, 3D modeler and the main programmer with many features like:
-	</p>
-
-	<ul>
-		<li>Unit components to make units and buildings modular and extensible</li>
-		<li>Map mesh generator</li>
-		<li>Fog-of-war rendering using C# jobs to multithread</li>
-		<li>Minimap using custom shaders</li>
-		<li>Tech tree with special conditions to progress</li>
-		<li>Many other visual effects and filters to give it its retro style</li>
+	<ul class="game-nav">
+		{#each aboutFiles as file}
+			<li>
+				<button type="button" on:click={() => openSection(file)}>{file.name}</button>
+			</li>
+		{/each}
 	</ul>
-
-	<Image
-		footer="The G.A.T.E, the entrance to the Zone"
-		images={[{ src: "/Games/Screenshots/z170_1.png", alt: "A scientist that just entered the Zone" }]}
-	/>
-
-	<Image
-		footer="The tech tree, it's not just a use-points-to-unlock thing, you also need to do actual field research"
-		images={[{ src: "/Games/Screenshots/z170_2.png", alt: "A tech tree with two technologies discovered" }]}
-	/>
-
-	<Image
-		footer="Entities live in the Zone, use your military to handle it"
-		images={[{ src: "/Games/Screenshots/z170_3.png", alt: "A soldier destroying a flesh wall" }]}
-	/>
 
 	<h3>Web development</h3>
 
@@ -266,42 +110,30 @@
 	<a href="https://github.com/tomi901/advent-of-code-2023" target="_blank" rel="noreferrer"
 		>Link to repo</a
 	>
-</article>
+</PageArticle>
 
 <style>
-	article {
-		padding: 40px 80px;
-		text-align: justify;
-		max-width: 800px;
-		margin: auto;
+	.game-nav {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
 	}
 
-	h3 {
-		margin-top: 48px;
-	}
+	.game-nav button {
+		background: none;
+		border: none;
+		padding: 0;
+		font: inherit;
+		cursor: pointer;
 
-	h4 {
-		margin-top: 48px;
-	}
-
-	a {
 		color: #888888;
 		text-decoration: underline dotted;
 	}
 
-	a:hover {
+	.game-nav button:hover {
 		color: #aaaaaa;
-	}
-
-	.yt-center {
-		margin-top: 24px;
-		display: flex;
-		justify-content: center;
-	}
-
-	.links {
-		display: flex;
-		flex-direction: column;
-		gap: 8px;
 	}
 </style>

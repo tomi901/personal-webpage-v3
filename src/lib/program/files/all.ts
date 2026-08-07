@@ -1,11 +1,12 @@
 import type { ExecutableFile } from "../File";
 import desktop from "./desktop";
 import games from "./games";
+import about from "./about";
 
 const allLookup = new Map(getAllKeyValues());
 
 function getAllKeyValues(): [string, ExecutableFile][] {
-	return [...desktop, ...games].map((f) => [f.id, f]);
+	return [...desktop, ...games, ...about].map((f) => [f.id, f]);
 }
 
 export function fileWithIdExists(id: string): boolean {
