@@ -12,16 +12,18 @@
 		spaces.
 	</p>
 
-	<iframe
-		width="560"
-		height="315"
-		src="https://www.youtube.com/embed/5ysB7z5UR7w?si=5HcVq22T-X4swOJn"
-		title="YouTube video player"
-		frameborder="0"
-		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-		allowfullscreen
-	>
-	</iframe>
+	<div class="yt-center">
+		<iframe
+			width="560"
+			height="315"
+			src="https://www.youtube.com/embed/5ysB7z5UR7w?si=5HcVq22T-X4swOJn"
+			title="YouTube video player"
+			frameborder="0"
+			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+			allowfullscreen
+		>
+		</iframe>
+	</div>
 
 	<p>
 		Send an expedition of scientists, investigate the zone, find anomalies and do experiments
