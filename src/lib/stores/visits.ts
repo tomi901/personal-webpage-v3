@@ -1,5 +1,5 @@
 import { set, increment, type Database } from "firebase/database";
-import { nodeStore } from "sveltefire";
+import { nodeStore } from "$lib/firebase/rtdb";
 import { browser } from "$app/environment";
 
 export function getAndIncrementVisit(db: Database, id: string) {

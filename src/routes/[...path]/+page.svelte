@@ -3,7 +3,7 @@
 	import WindowSystem from "$lib/components/WindowSystem.svelte";
 	import files from "$lib/program/files/desktop";
 
-	import { FirebaseApp } from "sveltefire";
+	import FirebaseApp from "$lib/firebase/FirebaseApp.svelte";
 	import { initializeApp } from "firebase/app";
 	import { getDatabase } from "firebase/database";
 

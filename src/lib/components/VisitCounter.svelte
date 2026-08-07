@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getFirebaseContext } from "sveltefire";
+	import { getFirebaseContext } from "$lib/firebase/context";
 	import { getAndIncrementVisit } from "$lib/stores/visits";
 
 	export let visitId: string;

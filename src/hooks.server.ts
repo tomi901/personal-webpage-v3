@@ -1,4 +1,4 @@
-import { Handle } from '@sveltejs/kit';
+import type { Handle } from '@sveltejs/kit';
 
 const proxyPath = '/cloud'
 
