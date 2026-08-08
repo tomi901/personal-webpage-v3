@@ -37,10 +37,5 @@
 		"vitest": "^3.2.7",
 		"web-vitals": "^3.5.0"
 	},
-	"pnpm": {
-		"onlyBuiltDependencies": [
-			"protobufjs"
-		]
-	},
 	"type": "module"
 }

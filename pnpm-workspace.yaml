@@ -1,7 +1,7 @@
 allowBuilds:
-  '@sveltejs/kit': set this to true or false
+  '@sveltejs/kit': true
   esbuild: true
-  protobufjs: set this to true or false
+  protobufjs: true
   svelte-preprocess: true
 minimumReleaseAgeExclude:
   - vite@5.1.7
